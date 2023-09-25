@@ -10,7 +10,6 @@ namespace C_Script.Player.Skill
 {
     public class WaterWaveSkillCool : SkillCool
     {
-        [SerializeField] private float coolDown;
         [SerializeField] private string skillName;
         
         private SkillData _data;
@@ -34,7 +33,6 @@ namespace C_Script.Player.Skill
         }
         public override void UpdateSkillCool()
         {
-            
             if (_clock == 1) return;
             StartCoroutine(UpdateSkill());
         }

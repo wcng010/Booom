@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace C_Script.Common.Model.ObjectPool
 {
-    public class PartObjectPool<T> :Singleton<T> where T : PartObjectPool<T>
+    public class PartObjectPool<T> :HungrySingleton<T> where T : PartObjectPool<T>
     {
         private Dictionary<string, GameObject> _objectPool = new Dictionary<string, GameObject>();
         protected override void Awake()

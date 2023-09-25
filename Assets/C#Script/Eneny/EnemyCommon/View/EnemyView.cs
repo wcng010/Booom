@@ -1,4 +1,6 @@
 ﻿using System;
+using C_Script.Common.Model.EventCentre;
+using C_Script.Manager;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,5 +14,21 @@ namespace C_Script.Eneny.EnemyCommon.View
         [NonSerialized] public UnityEvent EnemyHurtNoCrit = new();
 
         [NonSerialized]public UnityEvent EnemyDeath = new ();
+
+
+        private void OnEnable()
+        {
+            EnemyDeath.AddListener(EnemyReduce);
+        }
+
+        private void OnDisable()
+        {
+            EnemyDeath.RemoveListener(EnemyReduce);
+        }
+
+        public void EnemyReduce()
+        {
+            CombatEventCentreManager.Instance.Publish(CombatEventType.EnemyNumChange);
+        }
     }
 }

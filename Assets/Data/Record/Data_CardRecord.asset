@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acb79b3f9fa2a8d44a5c843da75d4944, type: 3}
+  m_Name: Data_CardRecord
+  m_EditorClassIdentifier: 
+  AngleCard: []
+  DemonCard: []
+  <PlayerHealthUpTimes>k__BackingField: 0
+  <PlayerHealthUpRate>k__BackingField: 0.5
+  <PlayerCoolReduceTimes>k__BackingField: 0
+  <PlayerCoolReduceRate>k__BackingField: 0.1
+  <PlayerSpeedUpTimes>k__BackingField: 0
+  <PlayerSpeedUpRate>k__BackingField: 0.1
+  <PlayerAttackUpTimes>k__BackingField: 0
+  <PlayerAttackUpRate>k__BackingField: 0.2
+  <BloodBottleUpTimes>k__BackingField: 0
+  <WaterFallSkill>k__BackingField: 0
+  <PlayerDashSkill>k__BackingField: 0
+  <EnemyNumUpTimes>k__BackingField: 0
+  <EnemyNumUpNum>k__BackingField: 2
+  <EnemyHealthUpTimes>k__BackingField: 0
+  <EnemyHealthUpRate>k__BackingField: 0.3
+  <EnemyAttackUpTimes>k__BackingField: 0
+  <EnemyAttackUpRate>k__BackingField: 0.3
+  <EnemyDefenseUpTimes>k__BackingField: 0
+  <EnemyDefenseUpRate>k__BackingField: 0.2

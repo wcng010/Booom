@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using C_Script.BaseClass;
 using C_Script.Common.Model.BehaviourModel;
 using C_Script.Common.Model.EventCentre;
+using C_Script.Manager;
 using C_Script.Model.BehaviourModel;
 using C_Script.Player.Component;
 using C_Script.Player.Data;
@@ -42,7 +43,6 @@ namespace C_Script.Player.Base
         public PlayerModel PlayerModel => GetComponentInParent<PlayerModel>();
         [Header("角色状态字典")] public readonly Dictionary<PlayerStateType, State<PlayerBase>> PlayerStateDic=new Dictionary<PlayerStateType, State<PlayerBase>>();
         public PlayerData PlayerData => PlayerModel.PlayerData;
-        public SkillData SkillBool => PlayerModel.SkillData;
         public RaycastHit2D HeadFrontHit2D { get; private set; }
         public RaycastHit2D BodyFrontHit2D { get; private set; }
         public bool BodyFront { get; private set; }
@@ -73,20 +73,18 @@ namespace C_Script.Player.Base
         {
             PhysicBehaviour();
         }
-
-
+        
         private void Update()
         {
             SwitchState();
             LogicBehaviour();
         }
-
-
+        
         private void OnDisable()
         {
            PlayerRemoveScribe();
         }
-
+        
         protected virtual void FindComponent()
         {
             InitAnimator(PlayerModel.PlayerAnimator);
@@ -104,6 +102,7 @@ namespace C_Script.Player.Base
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerStop,PlayerStopEvent);
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerStart,PlayerStartEvent);
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerDeath,DeathEvent);
+            CombatEventCentreManager.Instance.Subscribe(CombatEventType.UpdateAllData,UpdatePlayerData);
         }
         public void PlayerRemoveScribe()
         {
@@ -111,6 +110,7 @@ namespace C_Script.Player.Base
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerStop,PlayerStopEvent);
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerStart,PlayerStartEvent);
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerDeath,DeathEvent);
+            CombatEventCentreManager.Instance.Subscribe(CombatEventType.UpdateAllData,UpdatePlayerData);
         }
         private void PlayerStopEvent()
         {
@@ -130,7 +130,6 @@ namespace C_Script.Player.Base
         {
             StateMachine.ChangeState(PlayerStateDic[PlayerStateType.HurtStatePlayer]);
         }
-
         public override void DeathEvent()
         {
             StateMachine.ChangeState(PlayerStateDic[PlayerStateType.DeathStatePlayer]);
@@ -149,7 +148,6 @@ namespace C_Script.Player.Base
             PlayerData.CurrentHealth = PlayerData.MaxHealth;
             PlayerData.IsLinkTime = false;
         }
-        
         protected sealed override void InitStateDictionary()
         {
             StateMachine = new StateMachine<PlayerBase>(this);
@@ -189,12 +187,19 @@ namespace C_Script.Player.Base
                 yield return new WaitForSeconds(0.05f);
             }
         }
-        // ReSharper disable Unity.PerformanceAnalysis
-        /// <summary>
-        /// Use StateMachine To SwitchState
-        /// </summary>
+
+        protected void UpdatePlayerData()
+        {
+            PlayerData.MaxHealth *= (1 + GameManager.Instance.cardRecord.PlayerHealthUpAmount());
+            PlayerData.CurrentHealth = PlayerData.MaxHealth;
+            PlayerData.AttackPower *= (1 + GameManager.Instance.cardRecord.PlayerAttackUpAmount());
+            PlayerData.MaxSpeedX *= (1 + GameManager.Instance.cardRecord.PlayerSpeedUpAmount());
+            PlayerData.AccelerationX *= (1 + GameManager.Instance.cardRecord.PlayerSpeedUpAmount());
+        }
+
         protected override void SwitchState()
         {
+            
         }
     }
 }

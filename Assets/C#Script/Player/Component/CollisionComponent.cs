@@ -1,3 +1,4 @@
+using System;
 using C_Script.BaseClass;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace C_Script.Player.Component
         [field:FoldoutGroup("CommonSetting")][field: SerializeField] public Transform HandTrans{ get; private set; }
         [field:FoldoutGroup("PlayerUse")] [field: SerializeField] public float GroundCheckDistance { get; private set; }
         [field:FoldoutGroup("PlayerUse")] [field: SerializeField] public float WallCheckDistance { get; private set; }
-        [field: FoldoutGroup("EnemyUse")] [field: SerializeField] public float PlayerCheckDistance { get; private set; }
+        [field: FoldoutGroup("EnemyUse")] [field: SerializeField] public float AttackCheckDistance { get; private set; }
 
         [field: SerializeField] public LayerMask CheckLayer { get; private set; }
         
@@ -85,14 +86,42 @@ namespace C_Script.Player.Component
         public RaycastHit2D EnemyFrontCheck {
             get
             {
-                if(IsDebug)
-                    Debug.DrawLine(FootTrans.position,
-                        FootTrans.position + Vector3.left * (OwnerTrans.localScale.x * PlayerCheckDistance), Color.red);
-                return Physics2D.Raycast(FootTrans.position, Vector2.left * OwnerTrans.localScale.x, PlayerCheckDistance,
+                var headBool = Physics2D.Raycast(HeadTrans.position, Vector2.left * OwnerTrans.localScale.x,
+                    AttackCheckDistance,
                     CheckLayer);
+                
+                var bodyBool = Physics2D.Raycast(BodyTrans.position, Vector2.left * OwnerTrans.localScale.x,
+                    AttackCheckDistance,
+                    CheckLayer);
+                
+                var footBool = Physics2D.Raycast(FootTrans.position, Vector2.left * OwnerTrans.localScale.x,
+                    AttackCheckDistance,
+                    CheckLayer);
+                if (headBool.collider)
+                {
+                    return headBool;
+                }
+                if (bodyBool.collider)
+                {
+                    return bodyBool;
+                }
+                return footBool;
             }
         }
-        
         #endregion
+
+        private void OnDrawGizmos()
+        {
+            if (IsDebug)
+            {
+                Gizmos.color = Color.green;
+                Gizmos.DrawLine(HeadTrans.position,
+                    HeadTrans.position + Vector3.left * OwnerTrans.localScale.x * AttackCheckDistance);
+                Gizmos.DrawLine(BodyTrans.position,
+                    BodyTrans.position + Vector3.left * OwnerTrans.localScale.x * AttackCheckDistance);
+                Gizmos.DrawLine(FootTrans.position,
+                    FootTrans.position + Vector3.left * OwnerTrans.localScale.x * AttackCheckDistance);
+            }
+        }
     }
 }

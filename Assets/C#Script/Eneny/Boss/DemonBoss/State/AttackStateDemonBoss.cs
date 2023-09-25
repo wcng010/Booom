@@ -45,11 +45,11 @@ namespace C_Script.Eneny.Boss.DemonBoss.State
             {
                 if(StateMachine.CurrentState!=this)yield break;
                 RaycastHit2D hit2D = OwnerCore.GetCoreComponent<CollisionComponent>().EnemyFrontCheck;
-                if (hit2D)
+                if (hit2D.collider)
                 {
                     hit2D.transform.GetComponentInChildren<PlayerHealth>().FatalBlow();
                 }
-                yield return new WaitForSeconds(0.1f);
+                yield return 1;
             }
         }
 

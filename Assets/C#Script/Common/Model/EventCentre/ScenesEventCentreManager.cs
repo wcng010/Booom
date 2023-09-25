@@ -7,9 +7,8 @@ using UnityEngine.SceneManagement;
 
 namespace C_Script.Common.Model.EventCentre
 {
-    public class ScenesEventCentreManager : Singleton<ScenesEventCentreManager>
+    public class ScenesEventCentreManager : NormSingleton<ScenesEventCentreManager>
     {
-     
         private static readonly IDictionary<ScenesEventType, UnityEvent> Events =
             new Dictionary<ScenesEventType, UnityEvent>(); //Events字典装有若干个事件，一一对应事件类型，
         
@@ -60,6 +59,20 @@ namespace C_Script.Common.Model.EventCentre
                 LoadSceneEvent += action;
                 SceneManager.activeSceneChanged += LoadSceneEvent;
             }
+        }
+        private void OnEnable()
+        {
+            Subscribe(ScenesEventType.Loop,LoopScene);
+        }
+
+        private void OnDisable()
+        {
+            Unsubscribe(ScenesEventType.Loop,LoopScene);
+        }
+        
+        private void LoopScene()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

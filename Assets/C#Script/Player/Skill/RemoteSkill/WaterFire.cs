@@ -62,7 +62,7 @@ namespace C_Script.Player.Skill.RemoteSkill
             }
             if (col.CompareTag("Enemy")&&!_isBreak)
             {
-                col.transform.GetComponentInChildren<EnemyHealth>()?.EnemyDamageWithPower(amount,new Vector2(transform.rotation.y>0? -1:1,0));
+                col.transform.GetComponentInChildren<EnemyHealth>()?.EnemyDamageWithSkill(amount,new Vector2(transform.rotation.y>0? -1:1,0));
                 BreakDown();
             } 
         }
@@ -70,7 +70,8 @@ namespace C_Script.Player.Skill.RemoteSkill
         IEnumerator CheckFire()
         {
             yield return new WaitUntil(()=>_animator.GetCurrentAnimatorStateInfo(0).IsName("WaterMove"));
-            _rigidbody2D.AddForce(new Vector2(fireForce*(_ownerTrans.localScale.x>0?1:-1),0),ForceMode2D.Impulse);
+            if(!_isBreak)
+                _rigidbody2D.AddForce(new Vector2(fireForce*(_ownerTrans.localScale.x>0?1:-1),0),ForceMode2D.Impulse);
             yield return null;
         }
 

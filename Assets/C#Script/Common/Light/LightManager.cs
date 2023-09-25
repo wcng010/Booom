@@ -16,7 +16,7 @@ namespace C_Script.Common.Light
         White
     }
 
-    public class LightManager : Singleton<LightManager>
+    public class LightManager : HungrySingleton<LightManager>
     {
         public SerializedDictionary<LightType, Light2D> Light2Ds = new SerializedDictionary<LightType, Light2D>();
 

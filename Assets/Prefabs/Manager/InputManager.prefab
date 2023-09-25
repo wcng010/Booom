@@ -158,7 +158,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5454202312058715526}
         m_TargetAssemblyTypeName: C_Script.Manager.InputManager, Assembly-CSharp
-        m_MethodName: OnInput_D
+        m_MethodName: OnInput_E
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -170,22 +170,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 89be0023-221e-490e-877d-70a4d6d429d3
     m_ActionName: Gameplay/KeyD[/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5454202312058715526}
-        m_TargetAssemblyTypeName: C_Script.Manager.InputManager, Assembly-CSharp
-        m_MethodName: OnInput_A
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 2346b72e-54e9-4739-943f-d0b029743961
-    m_ActionName: Gameplay/KeyA[/Keyboard/a]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -203,4 +187,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8edc4e860a5bec4c807e230cd25a9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSaveNextScene: 0
+  isSaveNextScene: 1

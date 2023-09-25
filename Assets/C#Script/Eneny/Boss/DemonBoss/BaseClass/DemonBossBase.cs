@@ -46,12 +46,7 @@ namespace C_Script.Eneny.Boss.DemonBoss.BaseClass
             DemonBossView.EnemyHurtCrit.AddListener(HurtEvent);
             DemonBossView.EnemyDeath.AddListener(DeathEvent);
         }
-
-        private void Start()
-        {
-            
-        }
-
+        
         private void FixedUpdate()
         {
             PhysicBehaviour();

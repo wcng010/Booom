@@ -60,18 +60,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "KeyD",
+                    "name": "RecoverBlood",
                     "type": "Button",
                     "id": "89be0023-221e-490e-877d-70a4d6d429d3",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "KeyA",
-                    "type": "Button",
-                    "id": "2346b72e-54e9-4739-943f-d0b029743961",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -247,22 +238,11 @@
                 {
                     "name": "",
                     "id": "f00bc823-4b82-4422-b8c0-9924658bb898",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "KeyD",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ffdb8653-2405-45d8-8459-fee77430231b",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "KeyA",
+                    "action": "RecoverBlood",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

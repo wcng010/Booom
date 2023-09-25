@@ -41,9 +41,8 @@ namespace C_Script.Player.State.BaseState
         // ReSharper disable Unity.PerformanceAnalysis
         [Range(0, 1)] protected static uint PressJKeyCount = 0;
         protected PlayerData PlayerData => DataSo as PlayerData;
-        protected SkillData SkillData => Owner.SkillBool;
+        protected SkillData SkillData => PlayerModel.SkillData;
         protected Dictionary<PlayerStateType, State<PlayerBase>> StateDictionary => Owner.PlayerStateDic;
-
         protected PlayerModel PlayerModel => Model as PlayerModel;
         
         // ReSharper disable Unity.PerformanceAnalysis

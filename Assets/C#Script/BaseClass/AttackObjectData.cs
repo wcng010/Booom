@@ -6,7 +6,7 @@ namespace C_Script.BaseClass
 {
     public class AttackObjectDataSo : DataBaseSo
     {
-        [field: FoldoutGroup("CombatMessage")] [field: SerializeField] public float MaxHealth {get; private set; }
+        [field: FoldoutGroup("CombatMessage")] [field: SerializeField] public float MaxHealth {get; set; }
         [field: FoldoutGroup("CombatMessage")] [field: SerializeField] public float CurrentHealth {get; set; }
         [field: FoldoutGroup("CombatMessage")] [field: SerializeField] public float AttackPower {get; set;}
         [field: FoldoutGroup("CombatMessage")] [field: SerializeField] public int Defense { get; set; }

@@ -13,6 +13,7 @@ namespace C_Script.Eneny.Monster.Magician.State
         private int _counter;
         private GameObject _meteorite;
         private Vector2 _toTargetVector2;
+        private bool _canChange;
 
         // ReSharper disable Unity.PerformanceAnalysis
         public override void Enter()
@@ -42,7 +43,9 @@ namespace C_Script.Eneny.Monster.Magician.State
                     if (!_meteorite)
                     {
                         float temp = ++_counter;
+                        _canChange = false;
                         yield return new WaitForSeconds(MagicianData.RemoteAttackCoolDown);
+                        _canChange = true;
                         if(StateMachine.CurrentState!=this||Math.Abs(temp - _counter) > 0.1f) yield break;
                         _meteorite = OwnerCore.GetCoreComponent<MeteoriteComponent>().FireMateorite();
                     }
@@ -63,12 +66,12 @@ namespace C_Script.Eneny.Monster.Magician.State
             float toTargetDis = MathF.Abs(_toTargetVector2.magnitude);
             TransformOwner.localScale = new Vector3(_toTargetVector2.x/Mathf.Abs(_toTargetVector2.x), 1, 1);
             //距离大于远程攻击范围
-            if (toTargetDis > MagicianData.RemoteAttackRange)
+            if (toTargetDis > MagicianData.RemoteAttackRange&&_canChange)
             {
                 StateMachine.ChangeState(MagicianDic[EnemyStateType.PursuitStateEnemy]);
             }
             //距离小于近战攻击范围
-            else if (toTargetDis < MagicianData.MeleeAttackRange)
+            else if (toTargetDis < MagicianData.MeleeAttackRange&&_canChange)
             {
                 StateMachine.ChangeState(MagicianDic[EnemyStateType.MeleeAttackStateEnemy]);
             }

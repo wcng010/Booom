@@ -1,3 +1,4 @@
+using C_Script.Common.Model.EventCentre;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +17,7 @@ namespace C_Script.UI.ScenesChange
         
         public void ReStartGame()
         {
+            ScenesEventCentreManager.Instance.Publish(ScenesEventType.ClearRecord);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Time.timeScale = 1;
         }

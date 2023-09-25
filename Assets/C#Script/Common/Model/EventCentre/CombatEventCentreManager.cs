@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using C_Script.Common.Model.Singleton;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace C_Script.Common.Model.EventCentre
 {
-    public class CombatEventCentreManager: Singleton<CombatEventCentreManager>
+    public class CombatEventCentreManager: NormSingleton<CombatEventCentreManager>
     {
      
         private static readonly IDictionary<CombatEventType, UnityEvent> Events =

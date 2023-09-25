@@ -44,7 +44,7 @@ namespace C_Script.Eneny.Monster.Magician.State
             //距离大于追击范围
             if (toTargetDis > MagicianData.PursuitRange)
             {
-                StateMachine.ChangeState(MagicianDic[MagicianData.OriginState]);
+                StateMachine.ChangeState(MagicianDic[EnemyStateType.IdleStateEnemy]);
             }
             //距离小于远程攻击范围
             else if (toTargetDis< MagicianData.RemoteAttackRange)

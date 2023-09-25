@@ -9,7 +9,6 @@ namespace C_Script.Player.Skill
 {
     public class DashSkillCool : SkillCool
     {
-        [SerializeField] private float coolDown;
         [SerializeField] private string skillName;
 
         private SkillData _data;

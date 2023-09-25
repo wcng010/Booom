@@ -1,59 +1,67 @@
 using System;
-using C_Script.BaseClass;
+using System.Collections.Generic;
+using C_Script.Common.Model.EventCentre;
 using C_Script.Common.Model.Singleton;
+using C_Script.Manager;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 namespace C_Script.Eneny.EnemyCreator
 {
-    public class EnemyFactory : Singleton<EnemyFactory>
+    public class EnemyFactory : HungrySingleton<EnemyFactory>
     {
-        public ObjectListSo EnemySo => enemySo;
-        [SerializeField]private ObjectListSo enemySo;
+        [SerializeField]private int enemyNum;
+        [SerializeField]private List<Transform> generatePoints = new List<Transform>();
+        [SerializeField]private Transform bossTrans1;
+        [SerializeField] private Transform bossTrans2;
+        private List<Transform> _activedPoint = new List<Transform>();
+        
 
-        public GameObject CreatEnemy(String enemyName)
+        private void OnEnable()
         {
-            foreach (var enemy in enemySo.objList)
-            {
-                if (enemy.name == enemyName)
-                {
-                    GameObject.Instantiate(enemy, transform);
-                    return enemy;
-                }
-            }
-            //Debug.LogError("No this enemyName to creat");
-            return null;
+            CombatEventCentreManager.Instance.Subscribe(CombatEventType.UpdateAllData,UpdateMonsterData);
         }
 
-        public void AppendEnemy(GameObject addedEnemy)
+        private void OnDisable()
         {
-            try
-            {
-                enemySo.objList.Add(addedEnemy);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Add Enemy Error");
-                throw;
-            }
+            CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.UpdateAllData,UpdateMonsterData);
         }
         
-        public void DeleteEnemy(String enemyName) 
+        private void UpdateMonsterData()
         {
-            foreach (var enemy in enemySo.objList)
+            enemyNum += GameManager.Instance.cardRecord.EnemyNumUpAmount();
+            GenerateMonster();
+        }
+
+        private void GenerateMonster()
+        {
+            int loop = PlayerPrefs.GetInt("LoopCount");
+            if (loop != 4 && loop != 9)
             {
-                if (enemy.name == "enemyName")
+                if (enemyNum > generatePoints.Count) enemyNum = generatePoints.Count;
+                while (_activedPoint.Count < enemyNum)
                 {
-                    enemySo.objList.Remove(enemy);
+                    for (int i = 0; i < generatePoints.Count&&_activedPoint.Count<enemyNum; ++i)
+                    {
+                        if (Random.value > 0.5f)
+                        {
+                            generatePoints[i].gameObject.SetActive(true);
+                            _activedPoint.Add(generatePoints[i]);
+                        }
+                    }
                 }
+                CombatEventCentreManager.Instance.Publish(CombatEventType.EnemyNumChange);
+            }
+            if (loop == 4)
+            {
+                bossTrans1.gameObject.SetActive(true);
+            }
+
+            if (loop == 9)
+            {
+                bossTrans2.gameObject.SetActive(true);
             }
         }
-
-        private void Start()
-        {
-            CreatEnemy("Magician");
-        }
     }
-
-
 }

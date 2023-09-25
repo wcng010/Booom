@@ -1,4 +1,5 @@
-﻿using C_Script.Eneny.Boss.DemonBoss.Controller;
+﻿using C_Script.Common.Function;
+using C_Script.Eneny.Boss.DemonBoss.Controller;
 using C_Script.Eneny.Boss.DemonBoss.View;
 using C_Script.Eneny.EnemyCommon.Model;
 using C_Script.Eneny.Monster.Magician.Controller;
@@ -10,6 +11,5 @@ namespace C_Script.Eneny.Boss.DemonBoss.Model
 {
     public class DemonBossModel:EnemyModel
     {
-        
     }
 }

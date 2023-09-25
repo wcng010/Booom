@@ -2,6 +2,7 @@
 {
     public enum CombatEventType
     {
+        UpdateAllData,
         PlayerHurt,
         PlayerDeath,
         PlayerStop,
@@ -9,13 +10,17 @@
         EnemyStart,
         EnemyStop,
         EnterBossRoom,
-        CriticalStrike
+        CriticalStrike,
+        EnemyNumChange,
+        UseBloodBottle
     }
 
     public enum ScenesEventType
     {
         ReStart,
         GameOver,
-        LevelPass
+        LevelPass,
+        Loop,
+        ClearRecord
     }
 }

@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 
 namespace C_Script.Manager
 {
-    public class InputManager : Singleton<InputManager>
+    public class InputManager : NormSingleton<InputManager>
     {
         private PlayerInput _playerInput;
         public int InputX { get; private set; }
@@ -18,7 +18,7 @@ namespace C_Script.Manager
         public bool InputJ { get; set; }
         public bool InputK { get; private set; }
         public bool Alpha1 { get; private set; }
-
+        public bool InputE { get; private set; }
 
         #region Event
 
@@ -26,26 +26,21 @@ namespace C_Script.Manager
 
         [NonSerialized]public UnityEvent KeyEventAlpha1 = new ();
 
+        [NonSerialized]public UnityEvent KeyEventE = new();
+
         #endregion
         
         private void Start()
         {
             _playerInput = GetComponent<PlayerInput>();
         }
-
-        private void Update()
-        {
-            
-        }
-
+        
         public void OnMoveInput(InputAction.CallbackContext context)
         {
             var rawMovementInput = context.ReadValue<Vector2>();
             InputX = Mathf.RoundToInt(rawMovementInput.x);
             InputY = Mathf.RoundToInt(rawMovementInput.y);
         }
-        
-        
         public void OnInput_Space(InputAction.CallbackContext context)
         {
             if (context.started)
@@ -105,6 +100,19 @@ namespace C_Script.Manager
             if (context.canceled)
             {
                 Alpha1 = false;
+            }
+        }
+        
+        public void OnInput_E(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                InputE = true;
+                KeyEventE?.Invoke();
+            }
+            if (context.canceled)
+            {
+                InputE = false;
             }
         }
     }

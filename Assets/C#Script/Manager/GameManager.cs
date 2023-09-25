@@ -1,41 +1,49 @@
 using System;
+using C_Script.Common.Model.EventCentre;
 using C_Script.Common.Model.Singleton;
-using Cinemachine;
+using C_Script.Save.Gain_Debuff_Record;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
+
 
 namespace C_Script.Manager
 {
-    internal class GameManager : Singleton<GameManager>
+    internal class GameManager : HungrySingleton<GameManager>
     {
-        private Transform _objectPoolTrans;
-        public Transform ObjectPoolTrans
+        public CardRecord cardRecord;
+
+        private void ClearRecord()
         {
-            get
-            {
-                if (_objectPoolTrans == null)
-                    _objectPoolTrans = GameObject.FindWithTag("ObjectPool")?.transform;
-                return _objectPoolTrans;
-            }
+            PlayerPrefs.SetInt("LoopCount",0);
+            cardRecord.BloodBottleUpTimes = 0;
+            cardRecord.PlayerHealthUpTimes = 0;
+            cardRecord.PlayerSpeedUpTimes = 0;
+            cardRecord.PlayerCoolReduceTimes = 0;
+            cardRecord.PlayerAttackUpTimes = 0;
+            cardRecord.WaterFallSkill = false;
+            cardRecord.PlayerDashSkill = false;
+            
+            cardRecord.EnemyNumUpTimes = 0;
+            cardRecord.EnemyHealthUpTimes = 0;
+            cardRecord.EnemyDefenseUpTimes = 0;
+            cardRecord.EnemyAttackUpTimes = 0;
+            
+            cardRecord.AngleCard.Clear();
+            cardRecord.DemonCard.Clear();
+        }
+        private void OnEnable()
+        {
+            ScenesEventCentreManager.Instance.Subscribe(ScenesEventType.ClearRecord,ClearRecord);
         }
 
-        private CinemachineVirtualCamera _virtualCamera;
-
-        public CinemachineVirtualCamera VirtualCamera
+        private void OnDisable()
         {
-            get
-            {
-                if (_virtualCamera == null)
-                    _virtualCamera = GameObject.FindWithTag("VCM")?.GetComponent<CinemachineVirtualCamera>();
-                return _virtualCamera;
-            }
+            ScenesEventCentreManager.Instance.Unsubscribe(ScenesEventType.ClearRecord,ClearRecord);
         }
-
-        protected override void Awake()
+        
+        void OnApplicationQuit()
         {
-            _objectPoolTrans = GameObject.FindWithTag("ObjectPool")?.transform;
-            _virtualCamera = GameObject.FindWithTag("VCM")?.GetComponent<CinemachineVirtualCamera>();
+            ClearRecord();
         }
     }
 }

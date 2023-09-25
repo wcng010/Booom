@@ -6,6 +6,7 @@ using C_Script.Eneny.Monster.Magician.Data;
 using C_Script.Eneny.Monster.Magician.Model;
 using C_Script.Eneny.Monster.Magician.State;
 using C_Script.Eneny.Monster.Magician.View;
+using C_Script.Manager;
 using C_Script.Model.BehaviourModel;
 using UnityEngine;
 
@@ -103,7 +104,7 @@ namespace C_Script.Eneny.Monster.Magician.BaseClass
             StateMachine.ChangeState(MagicianDic[EnemyStateType.DeathStateEnemy]);
         }
 
-
+        
         private void SetOriginPointX()
         {
             MagicianData.OriginPointX = transform.position.x;
@@ -114,6 +115,7 @@ namespace C_Script.Eneny.Monster.Magician.BaseClass
         {
             StateMachine.ChangeState(MagicianDic[EnemyStateType.WinStateEnemy]);
         }
+        
         #endregion
         protected override void SwitchState()
         {

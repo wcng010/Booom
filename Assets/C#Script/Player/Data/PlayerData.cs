@@ -30,13 +30,8 @@ namespace C_Script.Player.Data
         public readonly float DecelerateRate60 = 0.6f;
         
         public readonly float DecelerateRate75 = 0.75f;
-        
-        [field: FoldoutGroup("属性")] [field: SerializeField] [field: Range(0, 2)] public float DecelerateRateRate{ get; private set; }
-        
-        [field: FoldoutGroup("属性")] [field:SerializeField] [field:Range(1,2)] public float AccelerateRate { get; private set; }
-        
-        [field: FoldoutGroup("MoveInfo")] [field: SerializeField] public float MaxSpeedX { get; private set; }
-        [field: FoldoutGroup("MoveInfo")] [field: SerializeField] public float AccelerationX{ get; private set; }//27.7
+        [field: FoldoutGroup("MoveInfo")] [field: SerializeField] public float MaxSpeedX { get; set; }
+        [field: FoldoutGroup("MoveInfo")] [field: SerializeField] public float AccelerationX{ get; set; }//27.7
         
         [field: FoldoutGroup("MoveInfo")] [field: SerializeField] public float DeAcceleration{ get; private set; }
         [field: FoldoutGroup("MoveInfo")]  public bool SpeedUpbotton { get; set; }

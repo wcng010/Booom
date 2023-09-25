@@ -9,8 +9,7 @@ namespace C_Script.UI.SkillBar
 {
     public abstract class SkillCool: MonoBehaviour
     {
-        public virtual void UpdateSkillCool()
-        {
-        }
+        [SerializeField] public float coolDown;
+        public abstract void UpdateSkillCool();
     }
 }

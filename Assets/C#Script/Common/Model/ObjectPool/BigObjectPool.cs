@@ -16,7 +16,7 @@ namespace C_Script.Common.Model.ObjectPool
         HitEffect3
     }
 
-    public class BigObjectPool : Singleton<BigObjectPool>
+    public class BigObjectPool : HungrySingleton<BigObjectPool>
     {
         [SerializeReference]
         private Dictionary<ObjectType, List<GameObject>> _objectPool = new Dictionary<ObjectType, List<GameObject>>();
@@ -28,7 +28,10 @@ namespace C_Script.Common.Model.ObjectPool
             }
             return null;
         }
-        
+
+
+        public bool HasKey(ObjectType objectType) => _objectPool.ContainsKey(objectType);
+
         public void PushObject(ObjectType type, GameObject obj)
         {
             if(!IsEmpty(type))
@@ -89,7 +92,7 @@ namespace C_Script.Common.Model.ObjectPool
 
         }
         
-        public void SetFalse(ObjectType type)
+        public void SetAllFalse(ObjectType type)
         {
             if (_objectPool.ContainsKey(type))
             {

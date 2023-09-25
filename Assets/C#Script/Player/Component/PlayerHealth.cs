@@ -1,5 +1,7 @@
-﻿using C_Script.BaseClass;
+﻿using System;
+using C_Script.BaseClass;
 using C_Script.Common.Model.EventCentre;
+using C_Script.Manager;
 using C_Script.Player.Core;
 using C_Script.Player.Data;
 using C_Script.Player.MVC.Model;
@@ -15,7 +17,17 @@ namespace C_Script.Player.Component
         private Transform PlayerTrans => PlayerModel.PlayerTrans;
         
         private GameObject _hitEffect;
-        
+
+        private void OnEnable()
+        {
+            InputManager.Instance.KeyEventE?.AddListener(RecoverHealth);
+        }
+
+        private void OnDisable()
+        {
+            InputManager.Instance.KeyEventE?.RemoveListener(RecoverHealth);
+        }
+
         public void PlayerDamage(float amount,Vector2 forceVector2,ForceDirection forceDir)=>Damage(PlayerData,amount,forceVector2,forceDir);
         
         private void Damage(AttackObjectDataSo attackObjectDataSo, float amount, Vector2 forceVector2,ForceDirection forceDir)
@@ -68,6 +80,24 @@ namespace C_Script.Player.Component
         {
             PlayerData.CurrentHealth = 0;
             CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerDeath);
+        }
+
+        private void RecoverHealth()
+        {
+            var maxHealth = PlayerData.MaxHealth;
+            if (GameManager.Instance.cardRecord.BloodBottleUpTimes > 0)
+            {
+                if (PlayerData.CurrentHealth + 0.5 * maxHealth > maxHealth)
+                {
+                    PlayerData.CurrentHealth = maxHealth;
+                }
+                else
+                {
+                    PlayerData.CurrentHealth += 0.5f * maxHealth;
+                }
+                GameManager.Instance.cardRecord.BloodBottleUpTimes--;
+                CombatEventCentreManager.Instance.Publish(CombatEventType.UpdateAllData);
+            }
         }
     }
 }

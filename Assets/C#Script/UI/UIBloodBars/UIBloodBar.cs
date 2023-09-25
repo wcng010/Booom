@@ -1,6 +1,7 @@
 using System;
 using C_Script.BaseClass;
 using C_Script.Common.Model.EventCentre;
+using C_Script.Manager;
 using C_Script.Player.MVC.Model;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -23,9 +24,21 @@ namespace C_Script.UI.UIBloodBars
             _xsclae = _rectTransform.localScale.x;
             _halfLength = _rectTransform.rect.width / 2*_xsclae;
             _originX = _rectTransform.localPosition.x;
-            CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerHurt,UpdateHealth);
+
         }
-        
+
+        private void OnEnable()
+        {
+            CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerHurt,UpdateHealth);
+            CombatEventCentreManager.Instance.Subscribe(CombatEventType.UpdateAllData,UpdateHealth);
+        }
+
+        private void OnDisable()
+        {
+            CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerHurt,UpdateHealth);
+            CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.UpdateAllData,UpdateHealth);
+        }
+
         private void UpdateHealth()
         {
             _heathRate =Mathf.Clamp(AttackObjectDataSo.CurrentHealth / AttackObjectDataSo.MaxHealth,0,1);

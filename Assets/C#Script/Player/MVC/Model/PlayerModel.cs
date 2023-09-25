@@ -1,3 +1,4 @@
+using System;
 using C_Script.Common.Audio;
 using C_Script.Player.Data;
 using Sirenix.OdinInspector;
@@ -18,5 +19,18 @@ namespace C_Script.Player.MVC.Model
 
         [field: FoldoutGroup("Custom")] [field: SerializeField] public PlayerAudioTrigger PlayerAudioTrigger { get; private set; }
         [field: FoldoutGroup("Custom")] [field: SerializeField] public Transform ObjectPool { get; private set; }
+
+        private void Awake()
+        {
+            InitSkill();
+        }
+
+        private void InitSkill()
+        {
+            SkillData.skillBools["Dash"] = false;
+            SkillData.skillBools["WaterWave"] = false;
+        }
+
+
     }
 }

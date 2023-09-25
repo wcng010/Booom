@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 namespace C_Script.Manager
 {
-    public class ABManager : Singleton<ABManager>
+    public class ABManager : HungrySingleton<ABManager>
     {
         private string MainAbName => "PC";
         private string PathURl => Application.streamingAssetsPath + "/";

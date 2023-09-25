@@ -82,18 +82,9 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""KeyD"",
+                    ""name"": ""RecoverBlood"",
                     ""type"": ""Button"",
                     ""id"": ""89be0023-221e-490e-877d-70a4d6d429d3"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""KeyA"",
-                    ""type"": ""Button"",
-                    ""id"": ""2346b72e-54e9-4739-943f-d0b029743961"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -269,22 +260,11 @@ public partial class @Player : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f00bc823-4b82-4422-b8c0-9924658bb898"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""KeyD"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ffdb8653-2405-45d8-8459-fee77430231b"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""KeyA"",
+                    ""action"": ""RecoverBlood"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -329,8 +309,7 @@ public partial class @Player : IInputActionCollection2, IDisposable
         m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
         m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
         m_Gameplay_Skill = m_Gameplay.FindAction("Skill", throwIfNotFound: true);
-        m_Gameplay_KeyD = m_Gameplay.FindAction("KeyD", throwIfNotFound: true);
-        m_Gameplay_KeyA = m_Gameplay.FindAction("KeyA", throwIfNotFound: true);
+        m_Gameplay_RecoverBlood = m_Gameplay.FindAction("RecoverBlood", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -396,8 +375,7 @@ public partial class @Player : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Dash;
     private readonly InputAction m_Gameplay_Attack;
     private readonly InputAction m_Gameplay_Skill;
-    private readonly InputAction m_Gameplay_KeyD;
-    private readonly InputAction m_Gameplay_KeyA;
+    private readonly InputAction m_Gameplay_RecoverBlood;
     public struct GameplayActions
     {
         private @Player m_Wrapper;
@@ -408,8 +386,7 @@ public partial class @Player : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Gameplay_Dash;
         public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
         public InputAction @Skill => m_Wrapper.m_Gameplay_Skill;
-        public InputAction @KeyD => m_Wrapper.m_Gameplay_KeyD;
-        public InputAction @KeyA => m_Wrapper.m_Gameplay_KeyA;
+        public InputAction @RecoverBlood => m_Wrapper.m_Gameplay_RecoverBlood;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -437,12 +414,9 @@ public partial class @Player : IInputActionCollection2, IDisposable
                 @Skill.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill;
                 @Skill.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill;
                 @Skill.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill;
-                @KeyD.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKeyD;
-                @KeyD.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKeyD;
-                @KeyD.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKeyD;
-                @KeyA.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKeyA;
-                @KeyA.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKeyA;
-                @KeyA.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKeyA;
+                @RecoverBlood.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRecoverBlood;
+                @RecoverBlood.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRecoverBlood;
+                @RecoverBlood.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRecoverBlood;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -465,12 +439,9 @@ public partial class @Player : IInputActionCollection2, IDisposable
                 @Skill.started += instance.OnSkill;
                 @Skill.performed += instance.OnSkill;
                 @Skill.canceled += instance.OnSkill;
-                @KeyD.started += instance.OnKeyD;
-                @KeyD.performed += instance.OnKeyD;
-                @KeyD.canceled += instance.OnKeyD;
-                @KeyA.started += instance.OnKeyA;
-                @KeyA.performed += instance.OnKeyA;
-                @KeyA.canceled += instance.OnKeyA;
+                @RecoverBlood.started += instance.OnRecoverBlood;
+                @RecoverBlood.performed += instance.OnRecoverBlood;
+                @RecoverBlood.canceled += instance.OnRecoverBlood;
             }
         }
     }
@@ -501,7 +472,6 @@ public partial class @Player : IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnSkill(InputAction.CallbackContext context);
-        void OnKeyD(InputAction.CallbackContext context);
-        void OnKeyA(InputAction.CallbackContext context);
+        void OnRecoverBlood(InputAction.CallbackContext context);
     }
 }
