@@ -37,7 +37,7 @@ namespace C_Script.Eneny.EnemyCreator
         private void GenerateMonster()
         {
             int loop = PlayerPrefs.GetInt("LoopCount");
-            if (loop != 4 && loop != 9)
+            if (loop != 3 && loop != 7)
             {
                 if (enemyNum > generatePoints.Count) enemyNum = generatePoints.Count;
                 while (_activedPoint.Count < enemyNum)
@@ -51,17 +51,17 @@ namespace C_Script.Eneny.EnemyCreator
                         }
                     }
                 }
-                CombatEventCentreManager.Instance.Publish(CombatEventType.EnemyNumChange);
             }
-            if (loop == 4)
+            if (loop == 3)
             {
                 bossTrans1.gameObject.SetActive(true);
             }
 
-            if (loop == 9)
+            if (loop == 7)
             {
                 bossTrans2.gameObject.SetActive(true);
             }
+            CombatEventCentreManager.Instance.Publish(CombatEventType.EnemyNumChange);
         }
     }
 }

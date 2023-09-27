@@ -15,6 +15,7 @@ namespace C_Script.Eneny.EnemyCommon.Component
         private Transform TargetTrans => EnemyModel.TargetTrans;
         private EnemyView EnemyView => View as EnemyView;
         private Rigidbody2D Rb =>  EnemyModel.EnemyRigidbody2D;
+        private Transform _mytrans;
         private EnemyData EnemyData => EnemyModel.EnemyData;
         private GameObject HitEffect1 => EnemyData.HitEffect1;
         private GameObject HitEffect2 => EnemyData.HitEffect2;
@@ -25,6 +26,7 @@ namespace C_Script.Eneny.EnemyCommon.Component
             BigObjectPool.Instance.PushEmptyPool(ObjectType.HitEffect1,HitEffect1);
             BigObjectPool.Instance.PushEmptyPool(ObjectType.HitEffect2,HitEffect2);
             BigObjectPool.Instance.PushEmptyPool(ObjectType.HitEffect3,HitEffect3);
+            _mytrans = EnemyModel.EnemyTrans;
         }
 
         protected virtual void Start() => InitHealth();
@@ -36,7 +38,9 @@ namespace C_Script.Eneny.EnemyCommon.Component
             if (EnemyData.AttackInvalid) return;
             CommonDamage(amount);
             EnemyView.EnemyHurtNoCrit.Invoke();
-            BigObjectPool.Instance.SetOneActive(ObjectType.HitEffect1).transform.position = transform.position + transform.lossyScale.x*(Vector3)EnemyData.HitEffectOffSet1;
+            var effectTrans = BigObjectPool.Instance.SetOneActive(ObjectType.HitEffect1).transform;
+            effectTrans.position = _mytrans.position + _mytrans.lossyScale.x*(Vector3)EnemyData.HitEffectOffSet1;
+            effectTrans.SetParent(_mytrans);
         }
         public void EnemyDamageWithPower(float amount, Vector2 forceVector2,bool isCritical = false)
         {
@@ -46,14 +50,21 @@ namespace C_Script.Eneny.EnemyCommon.Component
             {
                 CombatEventCentreManager.Instance.Publish(CombatEventType.CriticalStrike);
                 AudioManager.Instance.PlayerCriticalAttackPlay();
-                BigObjectPool.Instance.SetOneActive(ObjectType.HitEffect3).transform.position = transform.position - transform.lossyScale.x*(Vector3)EnemyData.HitEffectOffSet2;
+                var effectTrans = BigObjectPool.Instance.SetOneActive(ObjectType.HitEffect3).transform;
+                effectTrans.position = _mytrans.position - _mytrans.lossyScale.x*(Vector3)EnemyData.HitEffectOffSet2;
+                effectTrans.localScale = new Vector3(TargetTrans.position.x - _mytrans.position.x > 0?1:-1 ,1,1);
+                effectTrans.SetParent(_mytrans);
                 EnemyView.EnemyHurtCrit.Invoke();
             }
             else
             {
-                BigObjectPool.Instance.SetOneActive(ObjectType.HitEffect2).transform.position = transform.position - transform.lossyScale.x*(Vector3)EnemyData.HitEffectOffSet2;
+                var effectTrans = BigObjectPool.Instance.SetOneActive(ObjectType.HitEffect2).transform;
+                effectTrans.position = _mytrans.position - _mytrans.lossyScale.x*(Vector3)EnemyData.HitEffectOffSet2;
+                effectTrans.localScale = new Vector3(TargetTrans.position.x - _mytrans.position.x > 0?1:-1 ,1,1);
+                effectTrans.SetParent(_mytrans);
                 EnemyView.EnemyHurtNoCrit.Invoke();
             }
+            Rb.velocity = Vector2.zero;
             Rb.AddForce(new Vector2(forceVector2.x,0).normalized*EnemyData.HitForceForward,ForceMode2D.Impulse);
         }
 
@@ -63,10 +74,6 @@ namespace C_Script.Eneny.EnemyCommon.Component
             CommonDamage(amount);
             EnemyView.EnemyHurtCrit.Invoke();
         }
-
-
-
-
         private void CommonDamage(float amount)
         {
             if (EnemyData.Defense >= amount)

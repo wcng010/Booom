@@ -155,6 +155,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 274dcdf8e50f1c84ca4cfbf2618c1ca4, type: 3}
   - {fileID: 21300000, guid: e6e5894f0bf40904581089305b3786e6, type: 3}
   - {fileID: 21300000, guid: 8ef1501a14fa305478558ff0a961dde3, type: 3}
+  - {fileID: 21300000, guid: ca3d37adb3a8cd348be2ab222c7fe32d, type: 3}
   cardImage: {fileID: 2989873184413000724, guid: adde8e868d37e654f89440e9348115fd, type: 3}
 --- !u!95 &1004336652647804563
 Animator:

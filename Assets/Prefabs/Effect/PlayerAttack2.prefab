@@ -118,5 +118,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8828b96ed959a254aabaa8a91b50e819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posOffset: {x: -0.1, y: 0}
+  posOffset: {x: 0, y: 0}
   anitorTrigger: 

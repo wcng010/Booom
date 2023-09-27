@@ -48,13 +48,16 @@ namespace C_Script.Player.Component
             {
                 case ForceDirection.None : 
                     break;
-                case ForceDirection.Up : Rb.AddForce(forceVector2.normalized * attackObjectDataSo.HitForceUp, ForceMode2D.Impulse);
+                case ForceDirection.Up :
+                    Rb.velocity = Vector2.zero; Rb.AddForce(forceVector2.normalized * attackObjectDataSo.HitForceUp, ForceMode2D.Impulse);
                     CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                     break;
-                case ForceDirection.Down : Rb.AddForce(forceVector2.normalized * attackObjectDataSo.HitForceDown, ForceMode2D.Impulse);
+                case ForceDirection.Down :
+                    Rb.velocity = Vector2.zero; Rb.AddForce(forceVector2.normalized * attackObjectDataSo.HitForceDown, ForceMode2D.Impulse);
                     CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                     break;
-                case ForceDirection.Forward: Rb.AddForce(forceVector2.normalized * attackObjectDataSo.HitForceForward, ForceMode2D.Impulse);
+                case ForceDirection.Forward:
+                    Rb.velocity = Vector2.zero; Rb.AddForce(forceVector2.normalized * attackObjectDataSo.HitForceForward, ForceMode2D.Impulse);
                     CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                     break;
                 default: Debug.unityLogger.LogError("LogicError","No ForceDir Setting");
@@ -72,6 +75,7 @@ namespace C_Script.Player.Component
             {
                 CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerDeath);
             }
+            Rb.velocity = Vector2.zero;
             Rb.AddForce(new Vector2(-PlayerTrans.localScale.x,1).normalized*PlayerData.HitForceUp,ForceMode2D.Impulse);
             CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
         }

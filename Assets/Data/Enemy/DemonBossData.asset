@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee1e3613847455e98b1d4ac11f2ef59, type: 3}
   m_Name: DemonBossData
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 120
-  <CurrentHealth>k__BackingField: 120
+  <MaxHealth>k__BackingField: 300
+  <CurrentHealth>k__BackingField: 300
   <AttackPower>k__BackingField: 20
   <Defense>k__BackingField: 0
   <CriticalRate>k__BackingField: 0.5

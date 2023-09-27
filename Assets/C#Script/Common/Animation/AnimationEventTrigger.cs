@@ -1,9 +1,7 @@
-using System;
 using C_Script.Common.Interface;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace C_Script.Common
+namespace C_Script.Common.Animation
 {
     public class AnimationEventTrigger : MonoBehaviour
     {

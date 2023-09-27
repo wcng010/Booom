@@ -10,6 +10,7 @@ namespace C_Script.Manager
 {
     public class InputManager : NormSingleton<InputManager>
     {
+        private PlayerInput PlayerInput => _playerInput? _playerInput : _playerInput = GetComponent<PlayerInput>();
         private PlayerInput _playerInput;
         public int InputX { get; private set; }
         public int InputY { get; private set; }
@@ -30,11 +31,8 @@ namespace C_Script.Manager
 
         #endregion
         
-        private void Start()
-        {
-            _playerInput = GetComponent<PlayerInput>();
-        }
-        
+        public void CloseInput() => PlayerInput.enabled = false;
+        public void OpenInput() => PlayerInput.enabled = true;
         public void OnMoveInput(InputAction.CallbackContext context)
         {
             var rawMovementInput = context.ReadValue<Vector2>();

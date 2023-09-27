@@ -8,7 +8,7 @@ namespace C_Script.UI.Card
     {
         public override void OnButtonClick()
         {
-            Value = Random.Range(0, cardSprite.Count-1);
+            Value = Random.Range(0, cardSprite.Count);
             MyAnimator.SetTrigger(Flip);
             switch (Value)
             {
@@ -31,7 +31,7 @@ namespace C_Script.UI.Card
             CardManager.ClickCount += 1;
             if (CardManager.ClickCount >= 3)
             {
-                Invoke(nameof(CloseCardPanel),1.5f);
+                Invoke(nameof(CloseCardPanel),2f);
             }
         }
 

@@ -1,11 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using C_Script.Player.Base;
-using C_Script.Player.Component;
 using C_Script.Player.State.BaseState;
-using UnityEditor;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 namespace C_Script.Player.StateModel

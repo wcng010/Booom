@@ -31,7 +31,7 @@ namespace C_Script.Eneny.Monster.Magician.State
 
         public override void Exit()
         {
-            Debug.Log(2);
+
         }
 
         public DeathStateMagician(MagicianBase owner, string animationName, string nameToTrigger) : base(owner, animationName, nameToTrigger)

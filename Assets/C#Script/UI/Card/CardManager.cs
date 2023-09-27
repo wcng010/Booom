@@ -1,4 +1,5 @@
 using System;
+using C_Script.Manager;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -25,6 +26,17 @@ namespace C_Script.UI.Card
                 }
                 card.GetComponent<RectTransform>().anchoredPosition = new Vector3(350*(i-1),0,0);
             }
+        }
+        
+        
+        private void OnEnable()
+        {
+            InputManager.Instance.CloseInput();
+        }
+
+        private void OnDisable()
+        {
+            InputManager.Instance.OpenInput();
         }
     }
 }
