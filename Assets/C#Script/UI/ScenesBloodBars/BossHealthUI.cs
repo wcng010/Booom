@@ -78,6 +78,7 @@ namespace C_Script.UI.ScenesBloodBars
         {
             _bossDataSo.FirstDeath = true;
             _bossDataSo.CurrentHealth = _bossDataSo.MaxHealth;
+            Debug.Log(1);
             _bossFactory.StartCoroutine(ChangState());
         }
 

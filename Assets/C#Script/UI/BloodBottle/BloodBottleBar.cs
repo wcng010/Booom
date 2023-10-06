@@ -6,17 +6,17 @@ namespace C_Script.UI.BloodBottle
 {
     public class BloodBottleBar : MonoBehaviour
     {
-        [SerializeField]private GameObject bloodBottle;
-
         private void OnEnable()
         {
+            CombatEventCentreManager.Instance.Subscribe(CombatEventType.UseBloodBottle,UpdateBloodBottle);
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.UpdateAllData,UpdateBloodBottle);
             InputManager.Instance.KeyEventE?.AddListener(UpdateBloodBottle);
         }
 
         private void OnDisable()
         {
-            CombatEventCentreManager.Instance.Subscribe(CombatEventType.UpdateAllData,UpdateBloodBottle);
+            CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.UseBloodBottle,UpdateBloodBottle);
+            CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.UpdateAllData,UpdateBloodBottle);
             InputManager.Instance.KeyEventE?.RemoveListener(UpdateBloodBottle);
         }
 

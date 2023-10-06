@@ -52,7 +52,7 @@ namespace C_Script.Eneny.EnemyCreator
                     }
                 }
             }
-            if (loop == 3)
+            if (loop == 3)                       
             {
                 bossTrans1.gameObject.SetActive(true);
             }

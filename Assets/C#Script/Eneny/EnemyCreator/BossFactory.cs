@@ -58,7 +58,11 @@ namespace C_Script.Eneny.EnemyCreator
                 startTimeline.Play();
                 StartCoroutine(StopPlayer());
             }
+            CombatEventCentreManager.Instance.Publish(CombatEventType.EnemyNumChange);
         }
+
+        private void DelayLight() => RenderingLight.SetActive(true);
+        
         private IEnumerator StopPlayer()
         {
             yield return new WaitForSecondsRealtime(playerEnterTime);
@@ -69,6 +73,7 @@ namespace C_Script.Eneny.EnemyCreator
             CombatEventCentreManager.Instance.Publish(CombatEventType.EnemyStart);
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         public void DefeatBoss()
         {
             bossObj.SetActive(false);
@@ -77,7 +82,7 @@ namespace C_Script.Eneny.EnemyCreator
             bossHealthBar.SetActive(false);
             if(BossLight)
                 BossLight.SetActive(false);
-            RenderingLight.SetActive(true);
+            Invoke(nameof(DelayLight),2f);
             if(effect1)
                 effect1.SetActive(false);
             if(effect2)

@@ -30,12 +30,14 @@ namespace C_Script.UI.UIBloodBars
         private void OnEnable()
         {
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerHurt,UpdateHealth);
+            CombatEventCentreManager.Instance.Subscribe(CombatEventType.UseBloodBottle,UpdateHealth);
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.UpdateAllData,UpdateHealth);
         }
 
         private void OnDisable()
         {
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerHurt,UpdateHealth);
+            CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.UseBloodBottle,UpdateHealth);
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.UpdateAllData,UpdateHealth);
         }
 

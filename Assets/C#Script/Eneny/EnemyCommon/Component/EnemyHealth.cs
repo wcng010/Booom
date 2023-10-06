@@ -51,7 +51,7 @@ namespace C_Script.Eneny.EnemyCommon.Component
                 CombatEventCentreManager.Instance.Publish(CombatEventType.CriticalStrike);
                 AudioManager.Instance.PlayerCriticalAttackPlay();
                 var effectTrans = BigObjectPool.Instance.SetOneActive(ObjectType.HitEffect3).transform;
-                effectTrans.position = _mytrans.position - _mytrans.lossyScale.x*(Vector3)EnemyData.HitEffectOffSet2;
+                effectTrans.position = _mytrans.position - _mytrans.lossyScale.x*(Vector3)EnemyData.HitEffectOffSet3;
                 effectTrans.localScale = new Vector3(TargetTrans.position.x - _mytrans.position.x > 0?1:-1 ,1,1);
                 effectTrans.SetParent(_mytrans);
                 EnemyView.EnemyHurtCrit.Invoke();

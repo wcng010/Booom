@@ -100,7 +100,7 @@ namespace C_Script.Player.Component
                     PlayerData.CurrentHealth += 0.5f * maxHealth;
                 }
                 GameManager.Instance.cardRecord.BloodBottleUpTimes--;
-                CombatEventCentreManager.Instance.Publish(CombatEventType.UpdateAllData);
+                CombatEventCentreManager.Instance.Publish(CombatEventType.UseBloodBottle);
             }
         }
     }
