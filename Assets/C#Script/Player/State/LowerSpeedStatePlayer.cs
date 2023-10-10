@@ -62,7 +62,7 @@ namespace C_Script.Player.StateModel
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.RollStatePlayer]);
             }
             //Dash
-            else if (QKey&&SkillData.skillBools["Dash"])
+            else if (QKey&&SkillData.commonSkills["Dash"])
             {
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.DashStatePlayer]);
             }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using C_Script.BaseClass;
 using C_Script.Common.Model.BehaviourModel;
 using C_Script.Common.Model.EventCentre;
+using C_Script.Common.Model.ObjectPool;
 using C_Script.Eneny.Boss.DemonBoss.Data;
 using C_Script.Eneny.Boss.DemonBoss.Model;
 using C_Script.Eneny.Boss.DemonBoss.State;
@@ -105,7 +106,7 @@ namespace C_Script.Eneny.Boss.DemonBoss.BaseClass
 
         public override void DeathEvent()
         {
-           
+            
         }
 
         private void DemonBossStop()

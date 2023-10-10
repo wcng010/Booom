@@ -20,6 +20,7 @@ namespace C_Script.LevelSpecial.level_Start
         }
         IEnumerator ChangSence()
         {
+            GetComponent<Animator>()?.SetTrigger("Attack1");
             passEffect.Play();
             yield return new WaitUntil(() => passEffect.state == PlayState.Paused);
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex+1);

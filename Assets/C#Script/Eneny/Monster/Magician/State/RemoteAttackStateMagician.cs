@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using C_Script.BaseClass;
+using C_Script.Common.Model.ObjectPool;
 using C_Script.Eneny.Monster.Magician.BaseClass;
 using C_Script.Eneny.Monster.Magician.Component;
 using C_Script.Eneny.Monster.Magician.State.StateBase;
+using C_Script.Object;
 using UnityEngine;
 
 namespace C_Script.Eneny.Monster.Magician.State
@@ -19,6 +21,7 @@ namespace C_Script.Eneny.Monster.Magician.State
         public override void Enter()
         {
             base.Enter();
+            _counter++;
             Owner.StartCoroutine(RemoteAttackBehaviour());
         }
         
@@ -35,19 +38,21 @@ namespace C_Script.Eneny.Monster.Magician.State
         
         IEnumerator RemoteAttackBehaviour()
         {
+            int tag = _counter;
             while (true)
             {
                 if ((Mathf.Abs(_toTargetVector2.x) < MagicianData.RemoteAttackRange
                     &&(Mathf.Abs(_toTargetVector2.x)>MagicianData.MeleeAttackRange)))
                 {
-                    if (!_meteorite)
+                    if (!_meteorite||_meteorite.activeSelf == false)
                     {
-                        float temp = ++_counter;
                         _canChange = false;
                         yield return new WaitForSeconds(MagicianData.RemoteAttackCoolDown);
+                        if(StateMachine.CurrentState!=this||tag!=_counter) yield break;
+                        _meteorite = BigObjectPool.Instance.SetOneActive(ObjectType.Meteorite);
+                        _meteorite.GetComponent<Meteorite>().FireMeteorite
+                            (new Vector3(TransformOwner.transform.position.x,TransformOwner.transform.position.y+2f,TransformOwner.transform.position.z));
                         _canChange = true;
-                        if(StateMachine.CurrentState!=this||Math.Abs(temp - _counter) > 0.1f) yield break;
-                        _meteorite = OwnerCore.GetCoreComponent<MeteoriteComponent>().FireMateorite();
                     }
                 }
                 yield return new WaitForSeconds(0.05f);
@@ -58,7 +63,7 @@ namespace C_Script.Eneny.Monster.Magician.State
         
         public RemoteAttackStateMagician(MagicianBase owner, string animationName, string nameToTrigger) : base(owner, animationName, nameToTrigger)
         {
-            
+            BigObjectPool.Instance.PushEmptyPool(ObjectType.Meteorite,MagicianData.Meteorite);
         }
         private void SwitchState()
         {

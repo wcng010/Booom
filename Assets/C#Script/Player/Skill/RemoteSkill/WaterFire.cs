@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
+using C_Script.Common.Interface;
 using C_Script.Common.Model.ObjectPool;
 using C_Script.Eneny.EnemyCommon.Component;
 using C_Script.Eneny.Monster.Magician.Component;
-using C_Script.Interface;
 using C_Script.Manager;
 using C_Script.Player.Component;
 using Sirenix.OdinInspector;
@@ -12,7 +12,7 @@ using UnityEngine.Serialization;
 
 namespace C_Script.Player.Skill.RemoteSkill
 {
-    public class WaterFire : MonoBehaviour,IFireObject
+    public class WaterFire : MonoBehaviour,ISkill
     {
         [FoldoutGroup("Setting")]
         public float liveTime;
@@ -29,10 +29,10 @@ namespace C_Script.Player.Skill.RemoteSkill
         private bool _isBreak;
         private static readonly int IsFire = Animator.StringToHash("IsFire");
         private static readonly int IsBreak = Animator.StringToHash("IsBreak");
-        public ObjectType FireObjectType()=> ObjectType.WaterWave;
-        public void FireObject()
+        public ObjectType SkillType()=> ObjectType.WaterWave;
+        public void Skill()
         {
-            BigObjectPool.Instance.SetOneActive(FireObjectType());
+            BigObjectPool.Instance.SetOneActive(SkillType());
         }
 
         private void Awake()

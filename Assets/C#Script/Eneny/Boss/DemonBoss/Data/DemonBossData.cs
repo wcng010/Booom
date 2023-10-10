@@ -13,5 +13,6 @@ namespace C_Script.Eneny.Boss.DemonBoss.Data
         [field: SerializeField] [field: FoldoutGroup("CombatMessage")] public Vector2 OriginPos { get; private set; }
 
         [field: SerializeField] [field: FoldoutGroup("Prefabs")] public GameObject SkullCircle { get; private set; }
+        [field: SerializeField] [field: FoldoutGroup("Prefabs")] public GameObject StarGrounp { get; private set; }
     }
 }

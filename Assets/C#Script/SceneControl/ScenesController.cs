@@ -15,17 +15,24 @@ namespace C_Script.SceneControl
         private void OnEnable()
         {
             ScenesEventCentreManager.Instance.Subscribe(ScenesEventType.LevelPass,ScenePass);
+            ScenesEventCentreManager.Instance.Subscribe(ScenesEventType.OpenBlackBoard,BlackBoard);
         }
 
         private void OnDisable()
         {
             ScenesEventCentreManager.Instance.Unsubscribe(ScenesEventType.LevelPass,ScenePass);
+            ScenesEventCentreManager.Instance.Unsubscribe(ScenesEventType.OpenBlackBoard,BlackBoard);
         }
         private void ScenePass()
         {
             CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerStop);
             scenePassTimeline.Play();
             StartCoroutine(WaitTimeline(scenePassTimeline));
+        }
+
+        private void BlackBoard()
+        {
+            scenePassTimeline.Play();
         }
 
         IEnumerator WaitTimeline(PlayableDirector director)

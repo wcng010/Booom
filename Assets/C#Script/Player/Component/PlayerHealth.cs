@@ -79,6 +79,17 @@ namespace C_Script.Player.Component
             Rb.AddForce(new Vector2(-PlayerTrans.localScale.x,1).normalized*PlayerData.HitForceUp,ForceMode2D.Impulse);
             CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
         }
+        
+        public void StarDamage(float amount)
+        {
+            if ((PlayerData.CurrentHealth -= amount) < 0)
+            {
+                CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerDeath);
+            }
+            Rb.velocity = Vector2.zero;
+            Rb.AddForce(new Vector2(-PlayerTrans.localScale.x,1).normalized*PlayerData.HitForceUp,ForceMode2D.Impulse);
+            CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
+        }
 
         public void FatalBlow()
         {

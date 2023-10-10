@@ -120,10 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98395c2739a7042b7982d385aba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 8
+  fireTime: 7
   moveSpeed: 4
   amount: 15
-  DeathTime: 10
 --- !u!50 &1013162218251516370
 Rigidbody2D:
   serializedVersion: 4
@@ -291,10 +290,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98395c2739a7042b7982d385aba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 8
+  fireTime: 7
   moveSpeed: 4
   amount: 15
-  DeathTime: 10
 --- !u!50 &1756450302123657601
 Rigidbody2D:
   serializedVersion: 4
@@ -462,10 +460,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98395c2739a7042b7982d385aba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 10
+  fireTime: 9
   moveSpeed: 4
   amount: 15
-  DeathTime: 12
 --- !u!50 &478615580488397382
 Rigidbody2D:
   serializedVersion: 4
@@ -633,10 +630,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98395c2739a7042b7982d385aba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 8
+  fireTime: 7
   moveSpeed: 4
   amount: 15
-  DeathTime: 10
 --- !u!50 &6372802789309209137
 Rigidbody2D:
   serializedVersion: 4
@@ -864,10 +860,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98395c2739a7042b7982d385aba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 10
+  fireTime: 9
   moveSpeed: 4
   amount: 15
-  DeathTime: 12
 --- !u!50 &8912081995386774845
 Rigidbody2D:
   serializedVersion: 4
@@ -1035,10 +1030,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98395c2739a7042b7982d385aba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 8
+  fireTime: 7
   moveSpeed: 4
   amount: 15
-  DeathTime: 10
 --- !u!50 &6166891291556824370
 Rigidbody2D:
   serializedVersion: 4
@@ -1206,10 +1200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98395c2739a7042b7982d385aba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 10
+  fireTime: 9
   moveSpeed: 4
   amount: 15
-  DeathTime: 12
 --- !u!50 &837765088271205359
 Rigidbody2D:
   serializedVersion: 4
@@ -1377,10 +1370,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98395c2739a7042b7982d385aba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 10
+  fireTime: 9
   moveSpeed: 4
   amount: 15
-  DeathTime: 12
 --- !u!50 &849359112421993959
 Rigidbody2D:
   serializedVersion: 4

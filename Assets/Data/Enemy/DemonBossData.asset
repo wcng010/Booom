@@ -45,3 +45,4 @@ MonoBehaviour:
   <ReadyTime>k__BackingField: 6
   <OriginPos>k__BackingField: {x: 32.5, y: -3.69}
   <SkullCircle>k__BackingField: {fileID: 3477280648110825932, guid: 0da30a442097ba747bfb86cbca19397e, type: 3}
+  <StarGrounp>k__BackingField: {fileID: 3004308480463815882, guid: d45d7ea175dbe0a4ea4b0dc9fc9509ca, type: 3}

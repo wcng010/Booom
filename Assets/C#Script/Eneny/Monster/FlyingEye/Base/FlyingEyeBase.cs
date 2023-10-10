@@ -109,8 +109,12 @@ namespace C_Script.Eneny.Monster.FlyingEye.Base
         }
         #region Event
 
-        private void AffterPlayerDeath() =>
-            StateMachine.ChangeState(FlyingEyeDic[EnemyStateType.WinStateEnemy]);
+        private void AffterPlayerDeath()
+        {
+            if(StateMachine.CurrentState!=FlyingEyeDic[EnemyStateType.DeathStateEnemy])
+                StateMachine.ChangeState(FlyingEyeDic[EnemyStateType.WinStateEnemy]);
+        }
+
         #endregion
         protected override void SwitchState()
         {   

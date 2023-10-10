@@ -18,8 +18,9 @@ namespace C_Script.Player.StateModel
             var vec = Rigidbody2DOwner.velocity;
             Rigidbody2DOwner.velocity = new Vector2(0, vec.y/2);
             Owner.StartCoroutine(AttackRayTestWithoutPower(PlayerData.Attack1Range, AnimationTime,Collider2DOwner.size.y/2));
-            if(SkillData.skillBools["WaterWave"])
-                OwnerCore.GetCoreComponent<ObjectComponent>().FireObject(ObjectType.WaterWave);
+            //if(SkillData.skillBools["WaterWave"])
+            //调用技能组件中的Skill方法，由技能组件自己确定使用什么技能
+            OwnerCore.GetCoreComponent<SkillComponent>().Skill();
             JKey = false;
         }
         public override void LogicExcute()

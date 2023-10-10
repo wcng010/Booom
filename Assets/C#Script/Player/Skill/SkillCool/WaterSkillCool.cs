@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using C_Script.Manager;
 using C_Script.Player.Data;
@@ -6,9 +5,9 @@ using C_Script.UI.SkillBar;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace C_Script.Player.Skill
+namespace C_Script.Player.Skill.SkillCool
 {
-    public class WaterWaveSkillCool : SkillCool
+    public class WaterSkillCool : UI.SkillBar.SkillCool
     {
         [SerializeField] private string skillName;
         
@@ -20,16 +19,16 @@ namespace C_Script.Player.Skill
         {
             _image = GetComponent<Image>();
             _data = GetComponentInParent<SkillManager>().skillData;
-            _data.skillBools[skillName] = false;
+            _data.waterSkills[skillName] = false;
             _timer = coolDown;
         }
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
-            InputManager.Instance.KeyEventAlpha1.AddListener(UpdateSkillCool);
+            
         }
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
-            InputManager.Instance.KeyEventAlpha1.RemoveListener(UpdateSkillCool);
+            
         }
         public override void UpdateSkillCool()
         {
@@ -40,17 +39,17 @@ namespace C_Script.Player.Skill
         IEnumerator UpdateSkill()
         {
             _timer = coolDown;
-            if (!_data.skillBools[skillName])
+            if (!_data.waterSkills[skillName])
             {
                 _clock = 1;
-                _data.skillBools[skillName] = true;
+                _data.waterSkills[skillName] = true;
                 while (_timer > 0)
                 {
                     _timer -= Time.deltaTime;
                     _image.fillAmount = _timer / coolDown;
                     yield return new WaitForSeconds(Time.deltaTime);
                 }
-                _data.skillBools[skillName] = false;
+                _data.waterSkills[skillName] = false;
                 while (_timer < coolDown)
                 {
                     _timer += Time.deltaTime;

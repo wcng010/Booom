@@ -74,6 +74,17 @@ namespace C_Script.Eneny.EnemyCommon.Component
             CommonDamage(amount);
             EnemyView.EnemyHurtCrit.Invoke();
         }
+
+
+        public void EnemyDamageWithFall(float amount,int forceDirX)
+        {
+            if (EnemyData.AttackInvalid) return;
+            CommonDamage(amount);
+            Rb.velocity = Vector2.zero;
+            Rb.AddForce(new Vector2(forceDirX, 0).normalized*EnemyData.HitForceForward*2,ForceMode2D.Impulse);
+            EnemyView.EnemyHurtCrit.Invoke();
+        }
+
         private void CommonDamage(float amount)
         {
             if (EnemyData.Defense >= amount)

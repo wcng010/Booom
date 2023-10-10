@@ -1,13 +1,13 @@
-using System.Collections;
+﻿using System.Collections;
 using C_Script.Manager;
 using C_Script.Player.Data;
 using C_Script.UI.SkillBar;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace C_Script.Player.Skill
+namespace C_Script.Player.Skill.SkillCool
 {
-    public class DashSkillCool : SkillCool
+    public class ComonSkillCool:UI.SkillBar.SkillCool
     {
         [SerializeField] private string skillName;
 
@@ -19,21 +19,16 @@ namespace C_Script.Player.Skill
         {
             _image = GetComponent<Image>();
             _data = GetComponentInParent<SkillManager>().skillData;
-            _data.skillBools[skillName] = true;
+            _data.commonSkills[skillName] = true;
             _timer = coolDown;
         }
 
-        private void OnEnable()
-        {
-            InputManager.Instance.KeyEventQ.AddListener(UpdateSkillCool);
-        }
+        protected virtual void OnEnable()
+        { }
 
-        private void OnDisable()
-        {
-            InputManager.Instance.KeyEventQ.RemoveListener(UpdateSkillCool);
-        }
-
-
+        protected virtual void OnDisable()
+        { }
+        
         public override void UpdateSkillCool()
         {
             if (_clock == 1) return;
@@ -56,8 +51,8 @@ namespace C_Script.Player.Skill
                 _image.fillAmount = _timer / coolDown;
                 yield return new WaitForSeconds(Time.deltaTime);
             }
-            _data.skillBools[skillName] = true;
-                _clock = 0;
+            _data.commonSkills[skillName] = true;
+            _clock = 0;
         }
     }
 }

@@ -1,13 +1,10 @@
-using System;
 using C_Script.Common.Model.ObjectPool;
-using UnityEditor;
-using UnityEngine;
 
-namespace C_Script.Interface
+namespace C_Script.Common.Interface
 {
-    public interface IFireObject  
+    public interface ISkill
     {
-        ObjectType FireObjectType();
-        void FireObject();
+        ObjectType SkillType();
+        void Skill();
     }
 }

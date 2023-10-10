@@ -21,6 +21,7 @@ namespace C_Script.Eneny.Boss.DemonBoss.State
         {
             if (_isFirstEnter == 0)
             {
+                GameObject.Instantiate(DemonBossData.StarGrounp, TransformOwner);
                 GameObject.Instantiate(DemonBossData.SkullCircle, TransformOwner);
                 BigObjectPool.Instance.SetAllActive(ObjectType.Skull);
                 _isFirstEnter = 1;
@@ -59,8 +60,14 @@ namespace C_Script.Eneny.Boss.DemonBoss.State
             var rate = _timer / _readyTime;
             EnergyBar.localScale = new Vector3(4.9f * rate,EnergyBar.localScale.y,1);
             EnergyBar.localPosition = _barPosOri + new Vector3(_timer / _readyTime / 2/ 2 * 4.9f, 0, 0);
-            if(rate >0.75f)
+            if (rate > 0.75f)
+            {
                 Owner.Factory.effect1.SetActive(true);
+                if (DemonBossData.FirstDeath)
+                {
+                    BigObjectPool.Instance.SetAllActive(ObjectType.PurpleStar);
+                }
+            }
             if (rate > 1)
                 StateMachine.ChangeState(Owner.DemonBossDic[EnemyStateType.MeleeAttackStateEnemy]);
         }

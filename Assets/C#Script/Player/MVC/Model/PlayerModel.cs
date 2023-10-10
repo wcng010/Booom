@@ -22,15 +22,16 @@ namespace C_Script.Player.MVC.Model
 
         private void Awake()
         {
-            InitSkill();
+            
         }
 
         private void InitSkill()
         {
-            SkillData.skillBools["Dash"] = false;
-            SkillData.skillBools["WaterWave"] = false;
+
         }
-
-
+        
+        
+        
+        
     }
 }

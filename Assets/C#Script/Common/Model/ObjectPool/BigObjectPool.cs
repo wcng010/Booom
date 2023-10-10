@@ -9,8 +9,11 @@ namespace C_Script.Common.Model.ObjectPool
     public enum ObjectType
     {
         Skull,
+        PurpleStar,
         DashImage,
         WaterWave,
+        WaterBlast,
+        Meteorite,
         HitEffect1,
         HitEffect2,
         HitEffect3
@@ -91,7 +94,26 @@ namespace C_Script.Common.Model.ObjectPool
             }
 
         }
-        
+
+        public void SetActiveWithNumber(ObjectType type,int number)
+        {
+           if(_objectPool.ContainsKey(type))
+           {
+               //对象池内容少于number，则扩充
+               while(_objectPool.Count < number)
+               {
+                   PushObject(type,Instantiate(_objectPool[type][0]));
+               }
+               for (int i = 0; i < number; i++)
+               {
+                   _objectPool[type][i].SetActive(true);
+               }
+           }
+        }
+
+
+
+
         public void SetAllFalse(ObjectType type)
         {
             if (_objectPool.ContainsKey(type))

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d4c2b58e4e64aa596bdc32764313e2c, type: 3}
   m_Name: FlyingEyeData
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 60
-  <CurrentHealth>k__BackingField: 60
+  <MaxHealth>k__BackingField: 50
+  <CurrentHealth>k__BackingField: 50
   <AttackPower>k__BackingField: 15
   <Defense>k__BackingField: 3
   <CriticalRate>k__BackingField: 0.5

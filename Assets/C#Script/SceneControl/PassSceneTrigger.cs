@@ -12,15 +12,27 @@ namespace C_Script.SceneControl
         {
             if (String.Compare(col.gameObject.tag, "Player", StringComparison.Ordinal) == 0/*&&GameManager.Instance.enemyNum==0*/)
             {
-                ScenesEventCentreManager.Instance.Publish(ScenesEventType.Loop);
-                if (PlayerPrefs.HasKey("LoopCount"))
+                if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
                 {
-                    int count = PlayerPrefs.GetInt("LoopCount");
-                    PlayerPrefs.SetInt("LoopCount",count+1);
-                }
-                else
-                {
-                    PlayerPrefs.SetInt("LoopCount",0);
+                    if (PlayerPrefs.HasKey("LoopCount"))
+                    {
+                        int count = PlayerPrefs.GetInt("LoopCount");
+                        if (count != GameManager.Instance.endLoopCount)
+                        {
+                            ScenesEventCentreManager.Instance.Publish(ScenesEventType.Loop);
+                        }
+                        else
+                        {
+                            ScenesEventCentreManager.Instance.Publish(ScenesEventType.GameOver);
+                        }
+
+                        PlayerPrefs.SetInt("LoopCount", count + 1);
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt("LoopCount", 0);
+                        ScenesEventCentreManager.Instance.Publish(ScenesEventType.Loop);
+                    }
                 }
             }
         }

@@ -26,6 +26,10 @@ namespace C_Script.UI.Card
                     break;
                 case 6:Function7();
                     break;
+                case 7: Function8();
+                    break;
+                case 8 : Function9();
+                    break;
             }
             MyButton.enabled = false;
             CardManager.ClickCount += 1;
@@ -48,14 +52,19 @@ namespace C_Script.UI.Card
         }
         
         protected override void Function1() => PlayerHealthUp();
-        protected override void Function2() => WaterFallOpen();
+        protected override void Function2() => WaterWaveOpen();
         protected override void Function3() => PlayerCoolReduce();
         protected override void Function4() => PlayerDashOpen();
         protected override void Function5() => PlayerSpeedUp();
         protected override void Function6() => BloodBottleUp();
         protected override void Function7() => PlayerAttackUp();
+        protected void Function8() => WaterBlastOpen();
+        protected void Function9() => BigFallOpen();
+        
         private void PlayerHealthUp() => GameManager.Instance.cardRecord.PlayerHealthUpTimes++;
-        private void WaterFallOpen() => GameManager.Instance.cardRecord.WaterFallSkill = true;
+        private void WaterWaveOpen() => GameManager.Instance.cardRecord.WaterWaveSkill = true;
+        private void WaterBlastOpen() => GameManager.Instance.cardRecord.WaterBlastSkill = true;
+        private void BigFallOpen() => GameManager.Instance.cardRecord.PlayerBigFallSkill = true;
         private void PlayerCoolReduce() => GameManager.Instance.cardRecord.PlayerCoolReduceTimes++;
         private void PlayerDashOpen() => GameManager.Instance.cardRecord.PlayerDashSkill = true;
         private void PlayerSpeedUp() => GameManager.Instance.cardRecord.PlayerSpeedUpTimes++;

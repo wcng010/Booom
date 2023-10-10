@@ -11,7 +11,7 @@ namespace C_Script.Manager
     internal class GameManager : HungrySingleton<GameManager>
     {
         public CardRecord cardRecord;
-
+        public int endLoopCount;
         private void ClearRecord()
         {
             PlayerPrefs.SetInt("LoopCount",0);
@@ -20,9 +20,10 @@ namespace C_Script.Manager
             cardRecord.PlayerSpeedUpTimes = 0;
             cardRecord.PlayerCoolReduceTimes = 0;
             cardRecord.PlayerAttackUpTimes = 0;
-            cardRecord.WaterFallSkill = false;
+            cardRecord.WaterWaveSkill = false;
+            cardRecord.WaterBlastSkill = false;
             cardRecord.PlayerDashSkill = false;
-            
+            cardRecord.PlayerBigFallSkill = false;
             cardRecord.EnemyNumUpTimes = 0;
             cardRecord.EnemyHealthUpTimes = 0;
             cardRecord.EnemyDefenseUpTimes = 0;

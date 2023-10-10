@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3c970f9ad24a08ad95d38c922fcf59, type: 3}
   m_Name: MagicianData_Idle
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 80
-  <CurrentHealth>k__BackingField: 80
+  <MaxHealth>k__BackingField: 70
+  <CurrentHealth>k__BackingField: 70
   <AttackPower>k__BackingField: 20
   <Defense>k__BackingField: 5
   <CriticalRate>k__BackingField: 0.3
@@ -45,3 +45,4 @@ MonoBehaviour:
   <MeleeAttackCoolDown>k__BackingField: 1
   <OriginPointX>k__BackingField: 6.616698
   <MeleeAttackAngle>k__BackingField: 75
+  <Meteorite>k__BackingField: {fileID: 99027076843745876, guid: b9f08e4ec8d7e074bacbe883cdcf81c9, type: 3}

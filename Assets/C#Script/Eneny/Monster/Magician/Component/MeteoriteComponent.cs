@@ -24,7 +24,7 @@ namespace C_Script.Eneny.Monster.Magician.Component
         {
             var position = transform.position;
             var meteorite = Instantiate(meteoritePrefab, new Vector3(position.x, position.y + meteoritePointY),
-                new Quaternion(0,0,0,0),transform);
+                Quaternion.identity,transform);
             return meteorite;
         }
     }

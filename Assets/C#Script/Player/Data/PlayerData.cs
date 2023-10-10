@@ -56,7 +56,8 @@ namespace C_Script.Player.Data
         [field: FoldoutGroup("Prefabs")] [field: SerializeField] public GameObject JumpAsh { get; private set; }
         [field: FoldoutGroup("Prefabs")] [field: SerializeField] public GameObject TurnAroundAsh { get; private set; }
         [field: FoldoutGroup("Prefabs")] [field: SerializeField] public GameObject DashAsh { get; private set; }
-        
+
+        [field: FoldoutGroup("Prefabs")] [field: SerializeField] public GameObject BigFallAsh { get; private set; }
         [field: FoldoutGroup("Prefabs")] [field: SerializeField] public GameObject AfterImageDash { get; private set; }
         public bool WalkAshEffectTrriger { get; set; }
 

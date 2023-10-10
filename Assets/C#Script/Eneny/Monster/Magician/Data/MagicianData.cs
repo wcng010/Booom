@@ -13,7 +13,8 @@ namespace C_Script.Eneny.Monster.Magician.Data
 
         [field:SerializeField][field:FoldoutGroup("CombatMessage")] public float MeleeAttackCoolDown{ get; private set; }
         [field:SerializeField][field:FoldoutGroup("CombatMessage")] public float OriginPointX { get; set; }
-
         [field: SerializeField][field: FoldoutGroup("CombatMessage")] public float MeleeAttackAngle { get;private set; }
+
+        [field: SerializeField] [field: FoldoutGroup("CombatMessage")] public GameObject Meteorite { get;private set; }
     }
 }

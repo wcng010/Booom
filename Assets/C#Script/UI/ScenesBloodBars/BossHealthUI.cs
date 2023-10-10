@@ -78,7 +78,6 @@ namespace C_Script.UI.ScenesBloodBars
         {
             _bossDataSo.FirstDeath = true;
             _bossDataSo.CurrentHealth = _bossDataSo.MaxHealth;
-            Debug.Log(1);
             _bossFactory.StartCoroutine(ChangState());
         }
 
@@ -86,8 +85,6 @@ namespace C_Script.UI.ScenesBloodBars
         {
             _bossEnter2 = true;
             _bossFactory.DefeatBoss();
-            if(SceneManager.GetActiveScene().buildIndex+1 > SceneManager.sceneCountInBuildSettings) 
-                ScenesEventCentreManager.Instance.Publish(ScenesEventType.GameOver);
             enabled = false;
         }
     }

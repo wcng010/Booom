@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using C_Script.BaseClass;
 using C_Script.Common.Model.EventCentre;
+using C_Script.Common.Model.ObjectPool;
 using C_Script.Player.Component;
 using C_Script.Player.Data;
 using C_Script.StaticWay;
@@ -26,16 +27,15 @@ namespace C_Script.Object
         private float damageAmount;
         private float _startTime;
 
-        private void OnEnable()
+        public void FireMeteorite(Vector3 firePoint)
         {
+            transform.position = firePoint;
             Vector2 playerPos  = GameObject.FindWithTag(nameof(Player)).transform.position;
             _meteoriteRb = GetComponent<Rigidbody2D>();
             _meteoriteRb.AddForce((_toTarget = playerPos -(Vector2)transform.position)*fallPower,ForceMode2D.Impulse);
             _startTime = Time.unscaledTime;
-            Invoke(nameof(Recovery), aliveTime);
+            StartCoroutine(nameof(Recovery));
         }
-        
-        private void Recovery() => Destroy(gameObject);
         
         public void OnTriggerEnter2D(Collider2D collision)
         {
@@ -44,8 +44,14 @@ namespace C_Script.Object
                 CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                 collision.GetComponentInChildren<PlayerHealth>()
                     .PlayerDamage(damageAmount,StaticFunction.CalculateSpecularDir(_toTarget),ForceDirection.Up);
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
+        }
+
+        IEnumerator Recovery()
+        {
+            yield return new WaitForSeconds(aliveTime);
+            gameObject.SetActive(false);
         }
     }
 

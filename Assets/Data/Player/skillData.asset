@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81214dcee40f6434a9f63e5dec05432c, type: 3}
   m_Name: skillData
   m_EditorClassIdentifier: 
-  skillBools:
+  waterSkills:
     m_Keys:
     - WaterWave
-    - Dash
+    - WaterBlast
     m_Values: 0000
+  commonSkills:
+    m_Keys:
+    - Dash
+    - BigFall
+    m_Values: 0001

@@ -111,7 +111,7 @@ namespace C_Script.Player.State
            }
            if(JKey&& PressJKeyCount==0)
                StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.AttackState1Player]);
-           if(QKey&&SkillData.skillBools["Dash"])
+           if(QKey&&SkillData.commonSkills["Dash"])
                StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.DashStatePlayer]);
        }
        

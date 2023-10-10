@@ -22,8 +22,11 @@ namespace C_Script.Save.Gain_Debuff_Record
         [field: SerializeField] [field: FoldoutGroup("Buff Effect")] public float PlayerAttackUpRate { get; set; }
         public float PlayerAttackUpAmount() => PlayerAttackUpTimes * PlayerAttackUpRate;
         [field:SerializeField][field: FoldoutGroup("Buff Effect")] public int BloodBottleUpTimes { get; set; }
-        [field:SerializeField][field: FoldoutGroup("Buff Effect")] public bool WaterFallSkill{ get; set; }
+        [field:SerializeField][field: FoldoutGroup("Buff Effect")] public bool WaterWaveSkill{ get; set; }
         [field:SerializeField][field: FoldoutGroup("Buff Effect")] public bool PlayerDashSkill { get; set; }
+
+        [field: SerializeField] [field: FoldoutGroup("Buff Effect")] public bool PlayerBigFallSkill { get; set; }
+        [field: SerializeField] [field: FoldoutGroup("Buff Effect")] public bool WaterBlastSkill { get; set; }
 
         [field:SerializeField][field: FoldoutGroup("Debuff Effect")] public int EnemyNumUpTimes { get; set; }
         [field:SerializeField][field: FoldoutGroup("Debuff Effect")] public int EnemyNumUpNum { get; set; }

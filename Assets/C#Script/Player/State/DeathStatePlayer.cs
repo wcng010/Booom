@@ -8,6 +8,7 @@ namespace C_Script.Player.State
 {
     public class DeathStatePlayer:PlayerState
     {
+        private int _trigger;
         public override void Enter()
         {
             base.Enter();
@@ -19,7 +20,7 @@ namespace C_Script.Player.State
         }
         public override void LogicExcute()
         {
-            if (IsAniamtionFinshed)
+            if (IsAniamtionFinshed&&_trigger==0)
                 Owner.StartCoroutine(DeathIEnu());
         }
         public override void Exit()
@@ -28,6 +29,7 @@ namespace C_Script.Player.State
         }
         IEnumerator DeathIEnu()
         {
+            _trigger = 1;
             yield return new WaitForSeconds(1f);
             ScenesEventCentreManager.Instance.Publish(ScenesEventType.ReStart);
         }

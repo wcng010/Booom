@@ -23,8 +23,10 @@ MonoBehaviour:
   <PlayerAttackUpTimes>k__BackingField: 0
   <PlayerAttackUpRate>k__BackingField: 0.2
   <BloodBottleUpTimes>k__BackingField: 0
-  <WaterFallSkill>k__BackingField: 0
+  <WaterWaveSkill>k__BackingField: 0
   <PlayerDashSkill>k__BackingField: 0
+  <PlayerBigFallSkill>k__BackingField: 0
+  <WaterBlastSkill>k__BackingField: 0
   <EnemyNumUpTimes>k__BackingField: 0
   <EnemyNumUpNum>k__BackingField: 2
   <EnemyHealthUpTimes>k__BackingField: 0

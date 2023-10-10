@@ -73,9 +73,18 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Skill"",
+                    ""name"": ""WaterWaveSkill"",
                     ""type"": ""Button"",
                     ""id"": ""d1dc31a4-af44-461b-b853-0e8a39fd4458"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WaterBlastSkill"",
+                    ""type"": ""Button"",
+                    ""id"": ""a1b4bb8d-df34-4d07-828f-64c00b4d7235"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -85,6 +94,33 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""name"": ""RecoverBlood"",
                     ""type"": ""Button"",
                     ""id"": ""89be0023-221e-490e-877d-70a4d6d429d3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BigFall"",
+                    ""type"": ""Button"",
+                    ""id"": ""da7a460e-abe4-432b-8fa0-bd49adf6b4bd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Esc"",
+                    ""type"": ""Button"",
+                    ""id"": ""3a26e1db-740e-47ef-a107-eeff3c79f128"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Instructions"",
+                    ""type"": ""Button"",
+                    ""id"": ""cc29acb1-0fdc-419d-924c-3716b8c66dcd"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -253,7 +289,7 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Skill"",
+                    ""action"": ""WaterWaveSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -265,6 +301,50 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RecoverBlood"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b727ba48-4998-4a02-9e7a-4ade7e9e65c7"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WaterBlastSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d9e52fc9-7a35-4578-828c-4c88a1f997f0"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BigFall"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01ebbd8b-2da8-493f-aa63-fd3fc4688f6f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75eb5c5b-b59c-4bfe-b5e9-566cff877251"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Instructions"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -308,8 +388,12 @@ public partial class @Player : IInputActionCollection2, IDisposable
         m_Gameplay_RollSlide = m_Gameplay.FindAction("Roll/Slide", throwIfNotFound: true);
         m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
         m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
-        m_Gameplay_Skill = m_Gameplay.FindAction("Skill", throwIfNotFound: true);
+        m_Gameplay_WaterWaveSkill = m_Gameplay.FindAction("WaterWaveSkill", throwIfNotFound: true);
+        m_Gameplay_WaterBlastSkill = m_Gameplay.FindAction("WaterBlastSkill", throwIfNotFound: true);
         m_Gameplay_RecoverBlood = m_Gameplay.FindAction("RecoverBlood", throwIfNotFound: true);
+        m_Gameplay_BigFall = m_Gameplay.FindAction("BigFall", throwIfNotFound: true);
+        m_Gameplay_Esc = m_Gameplay.FindAction("Esc", throwIfNotFound: true);
+        m_Gameplay_Instructions = m_Gameplay.FindAction("Instructions", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -374,8 +458,12 @@ public partial class @Player : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_RollSlide;
     private readonly InputAction m_Gameplay_Dash;
     private readonly InputAction m_Gameplay_Attack;
-    private readonly InputAction m_Gameplay_Skill;
+    private readonly InputAction m_Gameplay_WaterWaveSkill;
+    private readonly InputAction m_Gameplay_WaterBlastSkill;
     private readonly InputAction m_Gameplay_RecoverBlood;
+    private readonly InputAction m_Gameplay_BigFall;
+    private readonly InputAction m_Gameplay_Esc;
+    private readonly InputAction m_Gameplay_Instructions;
     public struct GameplayActions
     {
         private @Player m_Wrapper;
@@ -385,8 +473,12 @@ public partial class @Player : IInputActionCollection2, IDisposable
         public InputAction @RollSlide => m_Wrapper.m_Gameplay_RollSlide;
         public InputAction @Dash => m_Wrapper.m_Gameplay_Dash;
         public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
-        public InputAction @Skill => m_Wrapper.m_Gameplay_Skill;
+        public InputAction @WaterWaveSkill => m_Wrapper.m_Gameplay_WaterWaveSkill;
+        public InputAction @WaterBlastSkill => m_Wrapper.m_Gameplay_WaterBlastSkill;
         public InputAction @RecoverBlood => m_Wrapper.m_Gameplay_RecoverBlood;
+        public InputAction @BigFall => m_Wrapper.m_Gameplay_BigFall;
+        public InputAction @Esc => m_Wrapper.m_Gameplay_Esc;
+        public InputAction @Instructions => m_Wrapper.m_Gameplay_Instructions;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -411,12 +503,24 @@ public partial class @Player : IInputActionCollection2, IDisposable
                 @Attack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
-                @Skill.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill;
-                @Skill.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill;
-                @Skill.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill;
+                @WaterWaveSkill.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWaterWaveSkill;
+                @WaterWaveSkill.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWaterWaveSkill;
+                @WaterWaveSkill.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWaterWaveSkill;
+                @WaterBlastSkill.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWaterBlastSkill;
+                @WaterBlastSkill.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWaterBlastSkill;
+                @WaterBlastSkill.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWaterBlastSkill;
                 @RecoverBlood.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRecoverBlood;
                 @RecoverBlood.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRecoverBlood;
                 @RecoverBlood.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRecoverBlood;
+                @BigFall.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBigFall;
+                @BigFall.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBigFall;
+                @BigFall.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBigFall;
+                @Esc.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnEsc;
+                @Esc.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnEsc;
+                @Esc.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnEsc;
+                @Instructions.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInstructions;
+                @Instructions.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInstructions;
+                @Instructions.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInstructions;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -436,12 +540,24 @@ public partial class @Player : IInputActionCollection2, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
-                @Skill.started += instance.OnSkill;
-                @Skill.performed += instance.OnSkill;
-                @Skill.canceled += instance.OnSkill;
+                @WaterWaveSkill.started += instance.OnWaterWaveSkill;
+                @WaterWaveSkill.performed += instance.OnWaterWaveSkill;
+                @WaterWaveSkill.canceled += instance.OnWaterWaveSkill;
+                @WaterBlastSkill.started += instance.OnWaterBlastSkill;
+                @WaterBlastSkill.performed += instance.OnWaterBlastSkill;
+                @WaterBlastSkill.canceled += instance.OnWaterBlastSkill;
                 @RecoverBlood.started += instance.OnRecoverBlood;
                 @RecoverBlood.performed += instance.OnRecoverBlood;
                 @RecoverBlood.canceled += instance.OnRecoverBlood;
+                @BigFall.started += instance.OnBigFall;
+                @BigFall.performed += instance.OnBigFall;
+                @BigFall.canceled += instance.OnBigFall;
+                @Esc.started += instance.OnEsc;
+                @Esc.performed += instance.OnEsc;
+                @Esc.canceled += instance.OnEsc;
+                @Instructions.started += instance.OnInstructions;
+                @Instructions.performed += instance.OnInstructions;
+                @Instructions.canceled += instance.OnInstructions;
             }
         }
     }
@@ -471,7 +587,11 @@ public partial class @Player : IInputActionCollection2, IDisposable
         void OnRollSlide(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
-        void OnSkill(InputAction.CallbackContext context);
+        void OnWaterWaveSkill(InputAction.CallbackContext context);
+        void OnWaterBlastSkill(InputAction.CallbackContext context);
         void OnRecoverBlood(InputAction.CallbackContext context);
+        void OnBigFall(InputAction.CallbackContext context);
+        void OnEsc(InputAction.CallbackContext context);
+        void OnInstructions(InputAction.CallbackContext context);
     }
 }

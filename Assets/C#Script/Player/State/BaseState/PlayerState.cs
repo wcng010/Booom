@@ -21,6 +21,8 @@ namespace C_Script.Player.State.BaseState
 
         protected int YAxis => InputManager.Instance.InputY;
 
+        protected bool SKey => InputManager.Instance.InputS;
+        
         protected bool JKey
         {
             get => InputManager.Instance.InputJ;
@@ -34,10 +36,7 @@ namespace C_Script.Player.State.BaseState
         protected bool SpaceKey => InputManager.Instance.InputSpace;
 
         #endregion
-
         private bool _isCritical;
-        
-        
         // ReSharper disable Unity.PerformanceAnalysis
         [Range(0, 1)] protected static uint PressJKeyCount = 0;
         protected PlayerData PlayerData => DataSo as PlayerData;

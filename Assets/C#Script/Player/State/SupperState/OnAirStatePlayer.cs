@@ -11,10 +11,14 @@ namespace C_Script.Player.StateModel.SupperState
     public class OnAirStatePlayer : PlayerState
     {
         // ReSharper disable Unity.PerformanceAnalysis
+        private bool _isBigFall;
         private string _fallAsh;
+        private string _bigFallAsh;
+
         public override void Enter()
         {
             base.Enter();
+            _isBigFall = false;
         }
 
         public override void PhysicExcute()
@@ -36,12 +40,26 @@ namespace C_Script.Player.StateModel.SupperState
         
         private void SwitchState()
         {
-            if (Owner.IsGroundOneRay)
+            if (KKey&& SkillData.commonSkills["BigFall"])
+            {
+                _isBigFall = true;
+                //加速下落
+                Rigidbody2DOwner.velocity += new Vector2(0, -1);
+            }
+            
+            if (Owner.IsGroundOneRay&&!_isBigFall)
             {
                 PlayerModel.PlayerAudioTrigger.LandPlay();
                 AshObjectPool.Instance.SetActive(_fallAsh);
                 StateMachine.RevertOrinalState();
             }
+            else if (Owner.IsGroundOneRay&&_isBigFall)
+            {
+                PlayerModel.PlayerAudioTrigger.LandPlay();
+                AshObjectPool.Instance.SetActive(_bigFallAsh);
+                StateMachine.ChangeState(StateDictionary[PlayerStateType.RollStatePlayer]);
+            }
+            
             RaycastHit2D headFrontHit2D= Owner.HeadFrontHit2D;
             RaycastHit2D bodyFrontHit2D = Owner.BodyFrontHit2D;
             if (!bodyFrontHit2D&&headFrontHit2D)
@@ -51,7 +69,7 @@ namespace C_Script.Player.StateModel.SupperState
             }
             if(JKey&& PressJKeyCount==0)
                 StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.AttackState1Player]);
-            if(QKey&&SkillData.skillBools["Dash"])
+            if(QKey&&SkillData.commonSkills["Dash"])
                 StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.DashStatePlayer]);
         }
         
@@ -66,7 +84,9 @@ namespace C_Script.Player.StateModel.SupperState
         public OnAirStatePlayer(PlayerBase owner, string animationName, string nameToTrigger) : base(owner, animationName, nameToTrigger)
         {
             AshObjectPool.Instance.PushObject(GameObject.Instantiate( PlayerData.FallAsh, AshObjectPool.Instance.transform));
+            AshObjectPool.Instance.PushObject(GameObject.Instantiate(PlayerData.BigFallAsh,AshObjectPool.Instance.transform));
             _fallAsh = PlayerData.FallAsh.name;
+            _bigFallAsh = PlayerData.BigFallAsh.name;
         }
     }
 }

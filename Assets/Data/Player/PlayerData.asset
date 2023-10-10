@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 150
   <CurrentHealth>k__BackingField: 150
-  <AttackPower>k__BackingField: 10
+  <AttackPower>k__BackingField: 15
   <Defense>k__BackingField: 5
   <CriticalRate>k__BackingField: 0.5
   <CriticalDamage>k__BackingField: 1.5
@@ -25,7 +25,7 @@ MonoBehaviour:
   <HitForceDown>k__BackingField: 400
   <HitForceForward>k__BackingField: 100
   <IsDebug>k__BackingField: 0
-  rollForce: 400
+  rollForce: 250
   slideForce: 500
   <CrouchSizeY>k__BackingField: 0.275
   <IdleSizeY>k__BackingField: 0.3814326
@@ -36,8 +36,6 @@ MonoBehaviour:
   <CrouchAttackRange>k__BackingField: 0.42
   <CoyoteTime>k__BackingField: 0.22
   <GravityScale>k__BackingField: 1.5
-  <DecelerateRateRate>k__BackingField: 0.5
-  <AccelerateRate>k__BackingField: 1.5
   <MaxSpeedX>k__BackingField: 2
   <AccelerationX>k__BackingField: 30
   <DeAcceleration>k__BackingField: 45
@@ -60,4 +58,5 @@ MonoBehaviour:
   <JumpAsh>k__BackingField: {fileID: 205662158833753469, guid: c7275bcdb46029b48988c3970a08b71a, type: 3}
   <TurnAroundAsh>k__BackingField: {fileID: 4232988749712398985, guid: ed4ad79e06971d44b97efc1d2205390f, type: 3}
   <DashAsh>k__BackingField: {fileID: 1869902095166616264, guid: e2be117f6fe91f248805dba65c683b11, type: 3}
+  <BigFallAsh>k__BackingField: {fileID: 8959068739204943568, guid: 110823e0f7479884d97f729e949bcf23, type: 3}
   <AfterImageDash>k__BackingField: {fileID: 4104717487180597261, guid: eabc8dce5bf1c6749a9a5171a89dca17, type: 3}

@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using C_Script.BaseClass;
 using C_Script.Common.Model.EventCentre;
+using C_Script.Eneny.EnemyCommon.View;
 using Cinemachine;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -90,6 +92,7 @@ namespace C_Script.Eneny.EnemyCreator
             bossViewCamera.SetActive(false);
             if(passWay)
                 passWay.SetActive(true);
+            GetComponent<EnemyView>().AfterEnemyDeath();
         }
     }
 }

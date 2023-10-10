@@ -28,7 +28,7 @@ namespace C_Script.Player.StateModel
 
         public override void Enter()
         {
-            SkillData.skillBools["Dash"] = false;
+            SkillData.commonSkills["Dash"] = false;
             base.Enter();
             _dashLength = PlayerData.DashLength;
             //There are obstacles ahead
@@ -41,7 +41,7 @@ namespace C_Script.Player.StateModel
             var position = TransformOwner.position;
             _dashOriginalX = position.x;
             _dashOriginalY = position.y;
-            Collider2DOwner.isTrigger = true;
+            Collider2DOwner.enabled = false;
             Rigidbody2DOwner.constraints = RigidbodyConstraints2D.FreezePositionY;
             Rigidbody2DOwner.gravityScale = PlayerData.GravityScale;
             _xLerp = 0;
@@ -59,7 +59,7 @@ namespace C_Script.Player.StateModel
         {
             base.Exit();
             Rigidbody2DOwner.constraints = RigidbodyConstraints2D.FreezeRotation;
-            Collider2DOwner.isTrigger = false;
+            Collider2DOwner.enabled = true;
             Rigidbody2DOwner.gravityScale = PlayerData.GravityScale;
         }
         private IEnumerator ReviseDashPoint()

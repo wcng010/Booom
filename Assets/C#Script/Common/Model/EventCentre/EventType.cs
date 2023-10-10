@@ -21,6 +21,7 @@
         GameOver,
         LevelPass,
         Loop,
-        ClearRecord
+        ClearRecord,
+        OpenBlackBoard
     }
 }

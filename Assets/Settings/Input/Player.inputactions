@@ -51,9 +51,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Skill",
+                    "name": "WaterWaveSkill",
                     "type": "Button",
                     "id": "d1dc31a4-af44-461b-b853-0e8a39fd4458",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WaterBlastSkill",
+                    "type": "Button",
+                    "id": "a1b4bb8d-df34-4d07-828f-64c00b4d7235",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -63,6 +72,33 @@
                     "name": "RecoverBlood",
                     "type": "Button",
                     "id": "89be0023-221e-490e-877d-70a4d6d429d3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "BigFall",
+                    "type": "Button",
+                    "id": "da7a460e-abe4-432b-8fa0-bd49adf6b4bd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Esc",
+                    "type": "Button",
+                    "id": "3a26e1db-740e-47ef-a107-eeff3c79f128",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Instructions",
+                    "type": "Button",
+                    "id": "cc29acb1-0fdc-419d-924c-3716b8c66dcd",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -231,7 +267,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Skill",
+                    "action": "WaterWaveSkill",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -243,6 +279,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "RecoverBlood",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b727ba48-4998-4a02-9e7a-4ade7e9e65c7",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WaterBlastSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9e52fc9-7a35-4578-828c-4c88a1f997f0",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BigFall",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01ebbd8b-2da8-493f-aa63-fd3fc4688f6f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Esc",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "75eb5c5b-b59c-4bfe-b5e9-566cff877251",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Instructions",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -10,6 +10,7 @@ namespace C_Script.Player.Data
     [CreateAssetMenu(fileName = "Data",menuName = "Data/SkillBool")]
     public class SkillData : ScriptableObject
     {
-        public SerializedDictionary<string,bool> skillBools = new SerializedDictionary<string, bool>();
+        public SerializedDictionary<string, bool> waterSkills = new SerializedDictionary<string, bool>();
+        public SerializedDictionary<string,bool> commonSkills = new SerializedDictionary<string, bool>();
     }
 }

@@ -30,5 +30,10 @@ namespace C_Script.Eneny.EnemyCommon.View
         {
             CombatEventCentreManager.Instance.Publish(CombatEventType.EnemyNumChange);
         }
+
+        public virtual void AfterEnemyDeath()
+        {
+            
+        }
     }
 }
